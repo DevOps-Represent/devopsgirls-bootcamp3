@@ -1,0 +1,59 @@
+---
+  AWSTemplateFormatVersion: '2010-09-09'
+  Description: Setup for DevOpsGirsl Bootcamp 3. This is a generic account wide setup that will be shared by everyone.
+  Parameters:
+    VpcCIDR: 
+      Description: Please enter the IP range (CIDR notation) for this VPC
+      Type: String
+      Default: 10.192.0.0/16
+    PublicSubnetCIDR:
+      Description: Please enter the IP range (CIDR notation) for the public subnet in the first Availability Zone
+      Type: String
+      Default: 10.192.0.0/16                
+  Resources:
+    VPC: 
+      Type: AWS::EC2::VPC
+      Properties:
+          CidrBlock: !Ref VpcCIDR
+    InternetGateway:
+      Type: AWS::EC2::InternetGateway
+    InternetGatewayAttachment:
+      Type: AWS::EC2::VPCGatewayAttachment
+      Properties:
+          InternetGatewayId: !Ref InternetGateway
+          VpcId: !Ref VPC
+    PublicSubnet: 
+      Type: AWS::EC2::Subnet
+      Properties:
+          VpcId: !Ref VPC
+          AvailabilityZone: !Select [ 0, !GetAZs ]
+          CidrBlock: !Ref PublicSubnetCIDR
+          MapPublicIpOnLaunch: true
+    PublicRouteTable:
+      Type: AWS::EC2::RouteTable
+      Properties: 
+          VpcId: !Ref VPC        
+    DefaultPublicRoute: 
+      Type: AWS::EC2::Route
+      DependsOn: InternetGatewayAttachment
+      Properties: 
+          RouteTableId: !Ref PublicRouteTable
+          DestinationCidrBlock: 0.0.0.0/0
+          GatewayId: !Ref InternetGateway
+    PublicSubnetRouteTableAssociation:
+      Type: AWS::EC2::SubnetRouteTableAssociation
+      Properties:
+          RouteTableId: !Ref PublicRouteTable
+          SubnetId: !Ref PublicSubnet  
+  Outputs: 
+    VPC: 
+      Description: 'Generic VPC'
+      Value: !Ref VPC
+      Export:
+        Name: !Sub '${AWS::StackName}-VPC'
+    PublicSubnet:
+      Description: 'Public Subnet'
+      Value: !Ref PublicSubnet
+      Export:
+        Name: !Sub '${AWS::StackName}-PublicSubnet'
+    
