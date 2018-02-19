@@ -27,4 +27,38 @@ In this practical session, we will
 
 ### 1.) Go to Services > S3, then click on "Create Bucket"
 
-![Create Bucket][images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png]
+![Create Bucket][3-3-1-create-s3-bucket]
+
+### 2.) Enter a unique bucket name and click "Next". The bucket name has to be globally unique. So use something like `yourname-devopsgirls-site`
+
+![Create Bucket][3-3-2-create-s3-bucket]
+
+### 3.) Click "Next" without making any changes.
+
+![Create Bucket][3-3-3-create-s3-bucket]
+
+### 4.) In the "Manage public permissions" drop down choose "Grant public read access to this bucket". Note that you will have a warning, but since we want to host a public website in this bucket, it is ok. Click "Next".
+
+![Create Bucket][3-3-4-create-s3-bucket]
+
+### 5.) Review the inputs, and click "Create Bucket"
+
+![Create Bucket][3-3-5-create-s3-bucket]
+
+## Configure S3 bucket as a webserver
+
+### 1.) Go to Services > S3, then click on the bucket you just created
+
+![Create Bucket][3-3-6-configure-s3-bucket]
+
+### 2.) Click on the "Properties" tab, and click on "Static Website Hosting"
+
+![Create Bucket][3-3-7-configure-s3-bucket]
+
+### 3.) Choose "Use this bucket to host a website", enter "index.html" in the "Index Dcoument" text box, and click "Save".
+
+![Create Bucket][3-3-8-configure-s3-bucket]
+
+## Copy the static website files to S3 bucket
+
+>>>>>>> Stashed changes
