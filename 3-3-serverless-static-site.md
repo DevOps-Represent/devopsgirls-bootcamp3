@@ -27,4 +27,4 @@ In this practical session, we will
 
 ### 1.) Go to Services > S3, then click on "Create Bucket"
 
-![Create Bucket][3-3-1-create-s3-bucket]
+![Create Bucket][images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png]
