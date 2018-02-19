@@ -26,5 +26,5 @@ In this practical session, we will
 ## Create S3 bucket as a web server
 
 ### 1.) Go to Services > S3, then click on "Create Bucket"
-![Image][3-3-1-create-s3-bucket]
+![Image][/images/3-3-serverless/3-3-1-create-s3-bucket.png]
 
