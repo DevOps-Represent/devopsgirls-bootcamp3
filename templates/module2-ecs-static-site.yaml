@@ -53,7 +53,9 @@ Resources:
   ECSHostSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties: 
-        VpcId: 'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'
+        VpcId: 
+          Fn::ImportValue: 
+             !Sub "${SharedParentStack}-VPC"
         GroupDescription: 'ECS Host Security Group'
         SecurityGroupIngress:
             - SourceSecurityGroupId: !Ref LoadBalancerSecurityGroup 
@@ -65,7 +67,9 @@ Resources:
   LoadBalancerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties: 
-        VpcId: 'Fn::ImportValue': !Sub '${ParentVPCStack}-VPC'
+        VpcId: 
+          Fn::ImportValue: 
+             !Sub "${SharedParentStack}-VPC"
         GroupDescription: 'ALB Security Group'        
         SecurityGroupIngress:
             - CidrIp: 0.0.0.0/0
@@ -76,7 +80,8 @@ Resources:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
         VPCZoneIdentifier: 
-            - 'Fn::ImportValue': !Sub '${ParentVPCStack}-PublicSubnet'
+            - Fn::ImportValue: 
+                !Sub "${SharedParentStack}-PublicSubnet"
         LaunchConfigurationName: !Ref ECSLaunchConfiguration
         MinSize: !Ref ClusterSize
         MaxSize: !Ref ClusterSize
@@ -183,49 +188,42 @@ Resources:
   ECSRole:
     Type: AWS::IAM::Role
     Properties:
+        AssumeRolePolicyDocument:
+            Statement:
+            - Effect: Allow
+              Principal:
+                Service: 'ec2.amazonaws.com'
+              Action: sts:AssumeRole
         Path: /
-        AssumeRolePolicyDocument: |
-            {
-                "Statement": [{
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                        "Service": "ec2.amazonaws.com"
-                    }
-                }]
-            }
         Policies:
-            - PolicyName: ecs-service
-            PolicyDocument: |
-                {
-                    "Statement": [{
-                        "Effect": "Allow",
-                        "Action": [
-                            "ecs:CreateCluster",
-                            "ecs:DeregisterContainerInstance",
-                            "ecs:DiscoverPollEndpoint",
-                            "ecs:Poll",
-                            "ecs:RegisterContainerInstance",
-                            "ecs:StartTelemetrySession",
-                            "ecs:Submit*",
-                            "ecr:BatchCheckLayerAvailability",
-                            "ecr:BatchGetImage",
-                            "ecr:GetDownloadUrlForLayer",
-                            "ecr:GetAuthorizationToken",
-                            "cloudwatch:PutMetricData",
-                            "ec2:DescribeInstanceStatus",
-                            "logs:CreateLogGroup",
-                            "logs:CreateLogStream",
-                            "logs:DescribeLogGroups",
-                            "logs:DescribeLogStreams",
-                            "logs:PutLogEvents",
-                            "s3:PutObject",
-                            "s3:GetObject",
-                            "s3:ListBucket"
-                        ],
-                        "Resource": "*"
-                    }]
-                }
+        - PolicyName: ecs-service
+          PolicyDocument: 
+            Version: '2012-10-17'
+            Statement:
+            - Effect : Allow
+              Action:
+              - "ecs:CreateCluster"
+              - "ecs:DeregisterContainerInstance"
+              - "ecs:DiscoverPollEndpoint"
+              - "ecs:Poll"
+              - "ecs:RegisterContainerInstance"
+              - "ecs:StartTelemetrySession"
+              - "ecs:Submit*"
+              - "ecr:BatchCheckLayerAvailability"
+              - "ecr:BatchGetImage"
+              - "ecr:GetDownloadUrlForLayer"
+              - "ecr:GetAuthorizationToken"
+              - "cloudwatch:PutMetricData"
+              - "ec2:DescribeInstanceStatus"
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"
+              - "logs:DescribeLogGroups"
+              - "logs:DescribeLogStreams"
+              - "logs:PutLogEvents"
+              - "s3:PutObject"
+              - "s3:GetObject"
+              - "s3:ListBucket"
+              Resource: '*'
   ECSInstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
@@ -236,68 +234,69 @@ Resources:
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
     Properties:
-        AccessControl: Private            
+        AccessControl: Private   
+                 
   Module2CodePipelineRolePolicy:
     Type: AWS::IAM::Policy
     Properties:
         PolicyName: Module3CodePipelineRolePolicy
         PolicyDocument:
-        Statement:
-        - Action:
-            - s3:GetObject
-            - s3:PutObject
-            - s3:GetObjectVersion
-            - s3:GetBucketVersioning
-            Resource:
+          Statement:
+            - Action:
+                - s3:GetObject
+                - s3:PutObject
+                - s3:GetObjectVersion
+                - s3:GetBucketVersioning
+              Resource:
                 - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}'
                 - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}/*'
-            Effect: Allow
-        - Action:
-            - codebuild:BatchGetBuilds
-            - codebuild:StartBuild
-            Resource: '*'
-            Effect: Allow
-        - Action:
-            - ecs:DescribeServices
-            - ecs:DescribeTaskDefinition
-            - ecs:DescribeTasks
-            - ecs:ListTasks
-            - ecs:RegisterTaskDefinition
-            - ecs:UpdateService
-            Resource: !Sub 'arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:cluster/${ECSCLuster}'
-            Effect: Allow            
-        - Action:
-            - codecommit:GetBranch
-            - codecommit:GetCommit 
-            - codecommit:UploadArchive
-            - codecommit:GetUploadArchiveStatus
-            - codecommit:CancelUploadArchive
-            Resource: !Sub 'arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${CodeCommitRepo.Name}'
-            Effect: Allow          
+              Effect: Allow
+            - Action:
+                - codebuild:BatchGetBuilds
+                - codebuild:StartBuild
+              Resource: '*'
+              Effect: Allow
+            - Action:
+                - ecs:DescribeServices
+                - ecs:DescribeTaskDefinition
+                - ecs:DescribeTasks
+                - ecs:ListTasks
+                - ecs:RegisterTaskDefinition
+                - ecs:UpdateService
+              Resource: !Sub 'arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:cluster/${ECSCluster}'
+              Effect: Allow            
+            - Action:
+                - codecommit:GetBranch
+                - codecommit:GetCommit 
+                - codecommit:UploadArchive
+                - codecommit:GetUploadArchiveStatus
+                - codecommit:CancelUploadArchive
+              Resource: '*'
+              Effect: Allow          
         Roles:
         - !Ref 'Module2CodePipelineRole'
   Module2CodePipelineRole:
     Type: AWS::IAM::Role
     Properties:
-        AssumeRolePolicyDocument:
+      AssumeRolePolicyDocument:
         Statement:
         - Sid: ''
-            Effect: Allow
-            Principal:
+          Effect: Allow
+          Principal:
             Service:
             - codepipeline.amazonaws.com
-            Action: sts:AssumeRole
-        Path: /
+          Action: sts:AssumeRole
+      Path: /
   Module2CodeBuildRole:
     Type: AWS::IAM::Role
     Properties:
         AssumeRolePolicyDocument:
-        Statement:
-        - Sid: ''
+          Statement:
+          - Sid: ''
             Effect: Allow
             Principal:
-            Service:
-            - codebuild.amazonaws.com
+              Service:
+              - codebuild.amazonaws.com
             Action: sts:AssumeRole
         Path: /
   Module2CodeBuildRolePolicy:
@@ -305,43 +304,36 @@ Resources:
     Properties:
         PolicyName: Module2CodeBuildRolePolicy
         PolicyDocument:
-        Statement:
-        - Effect: Allow
-            Resource:
-            - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*'
-            Action:
-            - logs:CreateLogGroup
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-        - Effect: Allow
-            Resource:
-            - !Sub 'arn:aws:s3:::${Module3ArtifactBucket}'
-            - !Sub 'arn:aws:s3:::${Module3ArtifactBucket}/*'
-            - !Sub 'arn:aws:s3:::${StaticSiteBucket}'
-            - !Sub 'arn:aws:s3:::${StaticSiteBucket}/*'
-            Action:
-            - s3:GetObject
-            - s3:PutObject
-            - s3:GetObjectVersion
-        - Effect: Allow
-            Resource:
-            - !Sub arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ECRRepository}
-            Action:
-            - ecr:GetDownloadUrlForLayer
-            - ecr:BatchGetImage
-            - ecr:BatchCheckLayerAvailability
-            - ecr:PutImage
-            - ecr:InitiateLayerUpload
-            - ecr:UploadLayerPart
-            - ecr:CompleteLayerUpload    
-        - Effect: Allow
-            Resource: '*'
-            Action:
-            - ecr:GetAuthorizationToken                   
+          Statement:
+            - Effect: Allow
+              Resource:
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*'
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+            - Effect: Allow
+              Resource: '*'
+              Action:
+                - s3:GetObject
+                - s3:PutObject
+                - s3:GetObjectVersion
+            - Effect: Allow
+              Resource:
+                - !Sub arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ECRRepository}
+              Action:
+                - ecr:GetDownloadUrlForLayer
+                - ecr:BatchGetImage
+                - ecr:BatchCheckLayerAvailability
+                - ecr:PutImage
+                - ecr:InitiateLayerUpload
+                - ecr:UploadLayerPart
+                - ecr:CompleteLayerUpload    
+            - Effect: Allow
+              Resource: '*'
+              Action:
+                - ecr:GetAuthorizationToken                   
         Roles:
-        - !Ref 'Module2CodeBuildRole'    
-Outputs: 
-  VPC: 
-      Description: A reference to the created VPC
-      Value: !Ref VPC
+          - !Ref 'Module2CodeBuildRole'    
+
   
