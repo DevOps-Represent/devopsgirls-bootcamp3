@@ -28,7 +28,7 @@ In this practical session, we will
 ### 1.) Creating an S3 Bucket
 Go to Services > S3, then click on "Create Bucket"
 
-![Create Bucket][3-3-1-create-s3-bucket.png]
+![Create Bucket][3-3-1-create-s3-bucket]
 
 ### 2.) Choose a name for S3 Bucket
 Enter a unique bucket name and click "Next". The bucket name has to be globally unique. So use something like `yourname-devopsgirls-site`
@@ -69,7 +69,7 @@ Choose "Use this bucket to host a website", enter "index.html" in the "Index Dco
 
 ## Copy the static website files to S3 bucket and make them public
 
-### 1.) GCopy the static files to S3 bucket
+### 1.) Copy the static files to S3 bucket
 Change working directory to website_files, and copy the files to the S3 bucket created above.
 
 ```
@@ -84,3 +84,8 @@ Navigate to the S3 bucket in the AWS console, and confirm all the files in the w
 Choose all the files, click on "More" and choose "Make Public". When prompted, confirm by clicking "Make Public" again
 
 ![Make Public][3-3-9-make-files-public]
+
+### 4.) Access the website
+Click on the public URL of the S3 bucket
+
+![Website][3-3-10-s3-public-endpoint]

@@ -22,14 +22,14 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       AccessControl: Private
-  StaticSiteBucket:
-    Type: AWS::S3::Bucket
-    DeletionPolicy: Delete
-    Properties:
-      AccessControl: PublicRead
-      BucketName: !Ref SiteBucketName
-      WebsiteConfiguration:
-        IndexDocument: index.html
+  # StaticSiteBucket:
+  #   Type: AWS::S3::Bucket
+  #   DeletionPolicy: Delete
+  #   Properties:
+  #     AccessControl: PublicRead
+  #     BucketName: !Ref SiteBucketName
+  #     WebsiteConfiguration:
+  #       IndexDocument: index.html
   Module3CodeBuildRole:
     Type: AWS::IAM::Role
     Properties:
@@ -56,11 +56,7 @@ Resources:
           - logs:CreateLogStream
           - logs:PutLogEvents
         - Effect: Allow
-          Resource:
-          - !Sub 'arn:aws:s3:::${Module3ArtifactBucket}'
-          - !Sub 'arn:aws:s3:::${Module3ArtifactBucket}/*'
-          - !Sub 'arn:aws:s3:::${StaticSiteBucket}'
-          - !Sub 'arn:aws:s3:::${StaticSiteBucket}/*'
+          Resource: '*'
           Action:
           - s3:*
       Roles:
@@ -171,8 +167,8 @@ Resources:
       ArtifactStore:
         Type: S3
         Location: !Ref Module3ArtifactBucket
-Outputs:
-  SiteUrl:
-    Value: !GetAtt [StaticSiteBucket, WebsiteURL]
-    Description: S3 Website URL
+# Outputs:
+#   SiteUrl:
+#     Value: !GetAtt [StaticSiteBucket, WebsiteURL]
+#     Description: S3 Website URL
 
