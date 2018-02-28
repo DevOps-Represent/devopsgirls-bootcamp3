@@ -33,7 +33,7 @@ Go to Services > S3, then click on "Create Bucket"
 ### 2.) Choose a name for S3 Bucket
 Enter a unique bucket name and click "Next". The bucket name has to be globally unique. So use something like `yourname-devopsgirls-site`
 
-![Create Bucket][https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png?raw=true]
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png?raw=true)
 
 ### 3.) Accept defaults
 Click "Next" without making any changes.
