@@ -28,44 +28,44 @@ In this practical session, we will
 ### 1.) Creating an S3 Bucket
 Go to Services > S3, then click on "Create Bucket"
 
-![Create Bucket][3-3-1-create-s3-bucket]
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png?raw=true)
 
 ### 2.) Choose a name for S3 Bucket
 Enter a unique bucket name and click "Next". The bucket name has to be globally unique. So use something like `yourname-devopsgirls-site`
 
-![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-1-create-s3-bucket.png?raw=true)
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-2-create-s3-bucket.png?raw=true)
 
 ### 3.) Accept defaults
 Click "Next" without making any changes.
 
-![Create Bucket][3-3-3-create-s3-bucket]
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-3-create-s3-bucket.png?raw=true)
 
 ### 4.) Make bucket public
 In the "Manage public permissions" drop down choose "Grant public read access to this bucket". Note that you will have a warning, but since we want to host a public website in this bucket, it is ok. Click "Next".
 
-![Create Bucket][3-3-4-create-s3-bucket]
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-4-create-s3-bucket.png?raw=true)
 
 ### 5.) Confirm bucket creation
 Review the inputs, and click "Create Bucket"
 
-![Create Bucket][3-3-5-create-s3-bucket]
+![Create Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-5-create-s3-bucket.png?raw=true)
 
 ## Configure S3 bucket as a webserver
 
 ### 1.) Choose the S3 bucket just created
 Go to Services > S3, then click on the bucket you just created
 
-![Configure Bucket][3-3-6-configure-s3-bucket]
+![Configure Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-6-configure-s3-bucket.png?raw=true)
 
 ### 2.) Modify bucket properties
 Click on the "Properties" tab, and click on "Static Website Hosting"
 
-![Configure Bucket][3-3-7-configure-s3-bucket]
+![Configure Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-7-configure-s3-bucket.png?raw=true)
 
 ### 3.) Configure bucket to host a website
 Choose "Use this bucket to host a website", enter "index.html" in the "Index Dcoument" text box, and click "Save".
 
-![Configure Bucket][3-3-8-configure-s3-bucket]
+![Configure Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-8-configure-s3-bucket.png?raw=true)
 
 ## Copy the static website files to S3 bucket and make them public
 
@@ -83,9 +83,10 @@ Navigate to the S3 bucket in the AWS console, and confirm all the files in the w
 ### 3.) Make files public
 Choose all the files, click on "More" and choose "Make Public". When prompted, confirm by clicking "Make Public" again
 
-![Make Public][3-3-9-make-files-public]
+![Make Public](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-9-make-files-public.png?raw=true)
+
 
 ### 4.) Access the website
 Click on the public URL of the S3 bucket
 
-![Website][3-3-10-s3-public-endpoint]
+![Website](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-10-s3-public-endpoint.png?raw=true)
