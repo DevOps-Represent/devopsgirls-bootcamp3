@@ -1,0 +1,387 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Setup for DevOpsGirsl Bootcamp 3, Module 2. ECS cluster in public subnet + CI setup
+Parameters:
+  SharedParentStack:
+    Description: 'The shared parent stack that has the VPC bits'
+    Type: String
+  InstanceType:
+    Description: Which instance type should we use to build the ECS cluster?
+    Type: String
+    Default: t2.micro
+  ClusterSize:
+      Description: How many ECS hosts do you want to initially deploy?
+      Type: Number
+      Default: 1
+Mappings:
+  AWSRegionToAMI:
+      us-east-2:
+          AMI: ami-ce1c36ab
+      us-east-1:
+          AMI: ami-28456852
+      us-west-2:
+          AMI: ami-decc7fa6
+      us-west-1:
+          AMI: ami-74262414
+      eu-west-3:
+          AMI: ami-9aef59e7
+      eu-west-2:
+          AMI: ami-67cbd003
+      eu-west-1:
+          AMI: ami-1d46df64
+      eu-central-1:
+          AMI: ami-509a053f
+      ap-northeast-2:
+          AMI: ami-c212b2ac
+      ap-northeast-1:
+          AMI: ami-872c4ae1
+      ap-southeast-2:
+          AMI: ami-58bb443a
+      ap-southeast-1:
+          AMI: ami-910d72ed
+      ca-central-1:
+          AMI: ami-435bde27
+      ap-south-1:
+          AMI: ami-00491f6f
+      sa-east-1:
+          AMI: ami-af521fc3
+              
+Resources:
+  ECRRepository:
+    Type: AWS::ECR::Repository
+    DeletionPolicy: Retain
+  ECSHostSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+        VpcId: 
+          Fn::ImportValue: 
+             !Sub "${SharedParentStack}-VPC"
+        GroupDescription: 'ECS Host Security Group'
+        SecurityGroupIngress:
+            - IpProtocol: tcp
+              FromPort: '22'
+              ToPort: '22'
+              CidrIp: 0.0.0.0/0
+            - IpProtocol: tcp
+              FromPort: '80'
+              ToPort: '80'
+              CidrIp: 0.0.0.0/0
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+  ECSAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+        VPCZoneIdentifier: 
+            - Fn::ImportValue: 
+                !Sub "${SharedParentStack}-PublicSubnet"
+        LaunchConfigurationName: !Ref ECSLaunchConfiguration
+        MinSize: !Ref ClusterSize
+        MaxSize: !Ref ClusterSize
+        DesiredCapacity: !Ref ClusterSize
+  ECSLaunchConfiguration:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+        ImageId:  !FindInMap [AWSRegionToAMI, !Ref "AWS::Region", AMI]
+        InstanceType: !Ref InstanceType
+        SecurityGroups:
+            - !Ref ECSHostSecurityGroup
+        IamInstanceProfile: !Ref ECSInstanceProfile
+        UserData:
+            "Fn::Base64": !Sub |
+                #!/bin/bash
+                yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+                yum install -y aws-cfn-bootstrap
+                /opt/aws/bin/cfn-init -v --region ${AWS::Region} --stack ${AWS::StackName} --resource ECSLaunchConfiguration
+                /opt/aws/bin/cfn-signal -e $? --region ${AWS::Region} --stack ${AWS::StackName} --resource ECSAutoScalingGroup
+    Metadata:
+        AWS::CloudFormation::Init:
+            config:
+                packages:
+                    yum:
+                        awslogs: []
+                commands:
+                    01_add_instance_to_cluster:
+                        command: !Sub echo ECS_CLUSTER=${ECSCluster} >> /etc/ecs/ecs.config
+                files:
+                    "/etc/cfn/cfn-hup.conf":
+                        mode: 000400
+                        owner: root
+                        group: root
+                        content: !Sub |
+                            [main]
+                            stack=${AWS::StackId}
+                            region=${AWS::Region}
+
+                    "/etc/cfn/hooks.d/cfn-auto-reloader.conf":
+                        content: !Sub |
+                            [cfn-auto-reloader-hook]
+                            triggers=post.update
+                            path=Resources.ECSLaunchConfiguration.Metadata.AWS::CloudFormation::Init
+                            action=/opt/aws/bin/cfn-init -v --region ${AWS::Region} --stack ${AWS::StackName} --resource ECSLaunchConfiguration
+                services:
+                    "/etc/awslogs/awscli.conf":
+                        content: !Sub |
+                            [plugins]
+                            cwlogs = cwlogs
+                            [default]
+                            region = ${AWS::Region}
+                    "/etc/awslogs/awslogs.conf":
+                        content: !Sub |
+                            [general]
+                            state_file = /var/lib/awslogs/agent-state
+
+                            [/var/log/dmesg]
+                            file = /var/log/dmesg
+                            log_group_name = ${ECSCluster}-/var/log/dmesg
+                            log_stream_name = ${ECSCluster}
+
+                            [/var/log/messages]
+                            file = /var/log/messages
+                            log_group_name = ${ECSCluster}-/var/log/messages
+                            log_stream_name = ${ECSCluster}
+                            datetime_format = %b %d %H:%M:%S
+
+                            [/var/log/docker]
+                            file = /var/log/docker
+                            log_group_name = ${ECSCluster}-/var/log/docker
+                            log_stream_name = ${ECSCluster}
+                            datetime_format = %Y-%m-%dT%H:%M:%S.%f
+
+                            [/var/log/ecs/ecs-init.log]
+                            file = /var/log/ecs/ecs-init.log.*
+                            log_group_name = ${ECSCluster}-/var/log/ecs/ecs-init.log
+                            log_stream_name = ${ECSCluster}
+                            datetime_format = %Y-%m-%dT%H:%M:%SZ
+
+                            [/var/log/ecs/ecs-agent.log]
+                            file = /var/log/ecs/ecs-agent.log.*
+                            log_group_name = ${ECSCluster}-/var/log/ecs/ecs-agent.log
+                            log_stream_name = ${ECSCluster}
+                            datetime_format = %Y-%m-%dT%H:%M:%SZ
+
+                            [/var/log/ecs/audit.log]
+                            file = /var/log/ecs/audit.log.*
+                            log_group_name = ${ECSCluster}-/var/log/ecs/audit.log
+                            log_stream_name = ${ECSCluster}
+                            datetime_format = %Y-%m-%dT%H:%M:%SZ
+                    sysvinit:
+                        cfn-hup:
+                            enabled: true
+                            ensureRunning: true
+                            files:
+                                - /etc/cfn/cfn-hup.conf
+                                - /etc/cfn/hooks.d/cfn-auto-reloader.conf
+                        awslogs:
+                            enabled: true
+                            ensureRunning: true
+                            files:
+                                - /etc/awslogs/awslogs.conf
+                                - /etc/awslogs/awscli.conf
+  ECSRole:
+    Type: AWS::IAM::Role
+    Properties:
+        AssumeRolePolicyDocument:
+            Statement:
+            - Effect: Allow
+              Principal:
+                Service: 'ec2.amazonaws.com'
+              Action: sts:AssumeRole
+        Path: /
+        Policies:
+        - PolicyName: ecs-service
+          PolicyDocument: 
+            Version: '2012-10-17'
+            Statement:
+            - Effect : Allow
+              Action:
+              - "ecs:CreateCluster"
+              - "ecs:DeregisterContainerInstance"
+              - "ecs:DiscoverPollEndpoint"
+              - "ecs:Poll"
+              - "ecs:RegisterContainerInstance"
+              - "ecs:StartTelemetrySession"
+              - "ecs:Submit*"
+              - "ecr:BatchCheckLayerAvailability"
+              - "ecr:BatchGetImage"
+              - "ecr:GetDownloadUrlForLayer"
+              - "ecr:GetAuthorizationToken"
+              - "cloudwatch:PutMetricData"
+              - "ec2:DescribeInstanceStatus"
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"
+              - "logs:DescribeLogGroups"
+              - "logs:DescribeLogStreams"
+              - "logs:PutLogEvents"
+              - "s3:PutObject"
+              - "s3:GetObject"
+              - "s3:ListBucket"
+              Resource: '*'
+  ECSInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+        Path: /
+        Roles:
+            - !Ref ECSRole
+  Module2ArtifactBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+        AccessControl: Private   
+                 
+  Module2CodePipelineRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+        PolicyName: Module3CodePipelineRolePolicy
+        PolicyDocument:
+          Statement:
+            - Action:
+                - s3:GetObject
+                - s3:PutObject
+                - s3:GetObjectVersion
+                - s3:GetBucketVersioning
+              Resource:
+                - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}'
+                - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}/*'
+              Effect: Allow
+            - Action:
+                - codebuild:BatchGetBuilds
+                - codebuild:StartBuild
+              Resource: '*'
+              Effect: Allow
+            - Action:
+                - ecs:DescribeServices
+                - ecs:DescribeTaskDefinition
+                - ecs:DescribeTasks
+                - ecs:ListTasks
+                - ecs:RegisterTaskDefinition
+                - ecs:UpdateService
+              Resource: !Sub 'arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:cluster/${ECSCluster}'
+              Effect: Allow            
+            - Action:
+                - codecommit:GetBranch
+                - codecommit:GetCommit 
+                - codecommit:UploadArchive
+                - codecommit:GetUploadArchiveStatus
+                - codecommit:CancelUploadArchive
+              Resource: '*'
+              Effect: Allow          
+        Roles:
+        - !Ref 'Module2CodePipelineRole'
+  Module2CodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Sid: ''
+          Effect: Allow
+          Principal:
+            Service:
+            - codepipeline.amazonaws.com
+          Action: sts:AssumeRole
+      Path: /
+  Module2CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+          - Sid: ''
+            Effect: Allow
+            Principal:
+              Service:
+              - codebuild.amazonaws.com
+            Action: sts:AssumeRole
+        Path: /
+  Module2CodeBuildRolePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+        PolicyName: Module2CodeBuildRolePolicy
+        PolicyDocument:
+          Statement:
+            - Effect: Allow
+              Resource:
+                - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*'
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+            - Effect: Allow
+              Resource: '*'
+              Action:
+                - s3:GetObject
+                - s3:PutObject
+                - s3:GetObjectVersion
+            - Effect: Allow
+              Resource:
+                - !Sub arn:aws:ecr:${AWS::Region}:${AWS::AccountId}:repository/${ECRRepository}
+              Action:
+                - ecr:GetDownloadUrlForLayer
+                - ecr:BatchGetImage
+                - ecr:BatchCheckLayerAvailability
+                - ecr:PutImage
+                - ecr:InitiateLayerUpload
+                - ecr:UploadLayerPart
+                - ecr:CompleteLayerUpload    
+            - Effect: Allow
+              Resource: '*'
+              Action:
+                - ecr:GetAuthorizationToken                   
+        Roles:
+          - !Ref 'Module2CodeBuildRole'    
+  CloudwatchLogsGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join ['-', [ECSLogGroup, !Ref 'AWS::StackName']]
+      RetentionInDays: 1
+  ESCTaskDef:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Join ['', [!Ref 'AWS::StackName', -ecs-demo-app]]
+      ContainerDefinitions:
+      - Name: simple-app
+        Cpu: '10'
+        Essential: 'true'
+        Image: httpd:2.4
+        Memory: '128'
+        LogConfiguration:
+          LogDriver: awslogs
+          Options:
+            awslogs-group: !Ref 'CloudwatchLogsGroup'
+            awslogs-region: !Ref 'AWS::Region'
+            awslogs-stream-prefix: ecs-demo-app
+        MountPoints:
+        - ContainerPath: /usr/local/apache2/htdocs
+          SourceVolume: my-vol
+        PortMappings:
+        - ContainerPort: 80
+          HostPort: 80
+      - Name: busybox
+        Cpu: 10
+        Command: ['/bin/sh -c "while true; do echo ''<html> <head> <title>Amazon ECS
+            Sample App</title> <style>body {margin-top: 40px; background-color: #333;}
+            </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon
+            ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now
+            running on a container in Amazon ECS.</p>'' > top; /bin/date > date ;
+            echo ''</div></body></html>'' > bottom; cat top date bottom > /usr/local/apache2/htdocs/index.html
+            ; sleep 1; done"']
+        EntryPoint: [sh, -c]
+        Essential: false
+        Image: busybox
+        Memory: 128
+        LogConfiguration:
+          LogDriver: awslogs
+          Options:
+            awslogs-group: !Ref 'CloudwatchLogsGroup'
+            awslogs-region: !Ref 'AWS::Region'
+            awslogs-stream-prefix: ecs-demo-app
+        VolumesFrom:
+        - SourceContainer: simple-app
+      Volumes:
+      - Name: my-vol
+  ECSService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref 'ECSCluster'
+      DesiredCount: '1'
+      TaskDefinition: !Ref 'ESCTaskDef'
+
+  
