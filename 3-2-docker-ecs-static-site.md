@@ -55,13 +55,23 @@ As we mention in the previous step, you will create the whole infrastructure usi
 
 2.2.2  Under the AWS services search field, search for *Cloudformation*, and click on the **Cloudformation** auto drop down element.
 
+
 2.2.2 In the screen's upper left corner click on the blue button 'Create Stack'.
+
+![3-2-2-2-create-cf-stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-2-create-cf-stack.png?raw=true)
 
 2.2.3 In the **Select Template** page, under the section *Choose a template* provide Cloudformation templeate that you have already downloaded in the step 2.2.0 (*module2-ecs-static-site.yaml*)
 
+![3-2-2-3-select-template](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-3-select-template.png?raw=true)
+
+
 2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, and last name without a space following the **-cf-ecs** string, and leave the rest of the information with the default values.
 
+![3-2-2-4-specify-datails](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-4-specify-datails.png?raw=true)
+
 2.2.5 In the **Options** page specify the following tags:
+
+![3-2-2-5-options-page](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-5-options-page.png?raw=true)
 
 |Key|Value|
 |---|---|
@@ -70,6 +80,8 @@ As we mention in the previous step, you will create the whole infrastructure usi
 |Workshop|DevopsGirls|
 |Resource|ECS Cloudformation|
 
-and in the permissions sections, choose the default existing IAM role and leave the rest information with the default values, and click next.
+In the permissions sections, choose the default existing IAM role and leave the rest information with the default values, and click next.
 
 2.2.6 In the **review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the previous button, or if everything is ok click in the create one to create the ECS cluster using the Cloudformation template.
+
+![3-2-2-6-review.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-6-review.png?raw=true)
