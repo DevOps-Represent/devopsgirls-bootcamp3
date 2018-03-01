@@ -48,7 +48,7 @@ git --version
 
 **Note**: If you would like to know more about how to use git [here you are a book's link](https://git-scm.com/book/en/v2) to understand everything about **git**. Enjoy it ;)!
 
-Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or [Visual Studio Code](https:// or https://code.visualstudio.com/download). 
+Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or [Visual Studio Code](https://code.visualstudio.com/download). 
 
 ## You'll be a CodeStar in no time
 ### 1. Log in to AWS
