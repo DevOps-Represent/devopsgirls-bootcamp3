@@ -12,6 +12,11 @@ creating a Cluster , a Service , Tasks (using Cloudformation)
 ● Recognize the convenience and power of containers & appreciate the benefits of using
 this approach.
 
+## Material & Tools Required
+● Laptop  
+● AWS account  
+● Same site files from previous module  
+
 ## 2.- Deploy a static website using a Docker container on AWS ECS
 
 In this module you will deploy a static website using a [Docker container](https://www.docker.com/what-container) on Amazon Elastic Container Service ([Amazon ECS](https://aws.amazon.com/ecs/)). The main aim of this configuration is that you can use it to run Docker applications on a scalable cluster that allows you, for instance, to run the applications easily by eliminating the need for you to install, operate, and scale your own cluster management infrastructure or to scale your containers up or down to meet your application's capacity requirement.
