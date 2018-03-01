@@ -24,9 +24,31 @@
 - Marvel at your website available for the world to see
 
 ## Prerequisites
-You will need the following software installed on your workstation:
-- Git client. https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-- Text editor such as Sublime or Visual Studio Code. https://www.sublimetext.com/3 or https://code.visualstudio.com/download
+You will need the following software installed on your workstation:  
+- [Git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+**How to Install Git Client**
+
+- For **Windows** download [Here](https://gitforwindows.org/) the latest installer. Once the file has been download successfully, you have to start the installation process configuring it with the default options.  
+ 
+- For **macOS** download the latest installer from [here](https://sourceforge.net/projects/git-osx-installer/files/). Once the file has been download successfully, you have to start the installation process configuring it with the default options.  
+
+- For **Debian/Ubuntu** using apt-get, open a terminal command line and run:
+
+```javascript
+sudo apt-get update
+sudo apt-get install git
+```
+
+- For **all platform** to confirm the installation was successful by typing:
+
+```javascript
+git --version
+```
+
+**Note**: If you would like to know more about how to use git [here you are a book's link](https://git-scm.com/book/en/v2) to understand everything about **git**. Enjoy it ;)!
+
+Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or [Visual Studio Code](https:// or https://code.visualstudio.com/download). 
 
 ## You'll be a CodeStar in no time
 ### 1. Log in to AWS
