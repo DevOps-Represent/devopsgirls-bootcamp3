@@ -27,7 +27,7 @@ If you are imagining how it could be, it should look like this:
 
 
 
-### 2.1 Introduction to the Docherfile definiton
+### 2.1 Introduction to the Dockerfile definiton
 
 Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using **docker build** users can create an automated build that executes several command-line instructions in succession.
 
