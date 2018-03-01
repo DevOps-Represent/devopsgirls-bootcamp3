@@ -49,4 +49,13 @@ COPY s3://devopsgirls1/index.html .
 
 As we mention in the previous step, you will create the whole infrastructure using the AWS Cloudformation service which allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications.
 
-2.2.1 
+2.2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
+
+2.2.1 Login with your credential to the AWS account
+
+2.2.2  Under the AWS services search field, search for *Cloudformation*, and click on the **Cloudformation** auto drop down element.
+
+2.2.2 In the screen's upper left corner click on the blue button 'Create Stack'.
+
+2.2.3 In the **Select Template** page, under the section *Choose a template* provide Cloudformation templeate that you have already download from the 
+
