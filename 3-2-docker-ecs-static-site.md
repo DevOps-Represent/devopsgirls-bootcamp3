@@ -23,7 +23,7 @@ In this module you will deploy a static website using a [Docker container](https
 
 If you are imagining how it could be, it should look like this:
 
-![ECS_Docker_Container_Diagram](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/2-1-docker-ecs-static-site/ECS_Docker_Container.png?raw=true)
+![ECS_Docker_Container_Diagram](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/ECS_Docker_Container.png?raw=true)
 
 
 
