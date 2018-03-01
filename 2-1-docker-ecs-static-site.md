@@ -1,4 +1,4 @@
-## Deploy a static website using a Docker container on ECS
+## Deploy a static website using a Docker container on AWS ECS
 
 In this module you will deploy a static website using a [docker container](https://www.docker.com/what-container) on Amazon Elastic Container Service ([Amazon ECS](https://aws.amazon.com/ecs/)). The main aim of this configuration is that you can use it to run Docker applications on a scalable cluster that allows you, for instance, to run the applications easily by eliminating the need for you to install, operate, and scale your own cluster management infrastructure or to scale your containers up or down to meet your application's capacity requirement.
 
