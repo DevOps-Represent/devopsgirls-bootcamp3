@@ -1,0 +1,76 @@
+# Deploy a static website to EC2 using CodeStar
+
+## Learning Aims
+### 1. Introduction to Continuous Integration, Delivery, and Deployment
+### 2. Introduction to AWS CodeStar, CodeCommit, and CodeDeploy
+
+## Key concepts
+- "*Continuous Integration*  is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible." - Martin Fowler, Chief Scientist, ThoughtWorks.
+- "*Continuous Delivery* is the natural extension of Continuous Integration, an approach in which teams ensure that every change to the system is releasable, and release any version with the push of a button. Continuous Delivery aims to make releases boring, so that we can deliver frequently and get quick feedback on what users care about." - Thoughtworks.
+- "*Continuous Deployment* is the next step of continuous delivery: Every change that passes the automated tests is deployed to production automatically. Continuous deployment should be the goal of most companies that are not constrained by regulatory or other requirements." - Puppet Labs
+
+## Key technologies used
+- AWS CodeStar: https://aws.amazon.com/codestar/
+- AWS EC2: https://aws.amazon.com/ec2/
+- AWS CodeCommit: https://aws.amazon.com/codecommit/
+- AWS Code: https://aws.amazon.com/codedeploy/
+- Git: https://git-scm.com/
+
+## Module Overview
+- Setup and a deploy a new static website project in AWS CodeStar
+- Download static files from an AWS S3 bucket. These files will be used to customise the static website
+- Commit and push downloaded static files to CodeCommit repository using Git
+- Observe CodeDeploy trigger a deployment from the detected Git push
+- Marvel at your website available for the world to see
+
+## Prerequisites
+You will need the following software installed on your workstation:
+- Git client. https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- Text editor such as Sublime or Visual Studio Code. https://www.sublimetext.com/3 or https://code.visualstudio.com/download
+
+## You'll be a CodeStar in no time
+### 1. Log in to AWS
+1.1. Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.
+### 2. Ensure you're in the right AWS region
+2.1. On the top-right side, make sure you select *Sydney*.
+### 3. Create CodeStar Project
+3.1.  Under the AWS services search field, search for *codestar*, and click on the CodeStar auto drop down element  
+3.2. Click on the '+ Create a new project' link  
+3.3. On the left hand side, under Application Category, select *Static Website*  
+3.4. Under *Choose a project template*, click on 'HTML - Static Website - Amazon EC2'  
+3.5. Under the *Project name* field enter your first name, and last name without a space. For example *sallytran*  
+3.6. Select *AWS CodeCommit* as your source code repository  
+3.7. Under the *Repository name* field, enter the same value you did in step 3.5. I.e. *firstnamelastname*  
+3.8. Click the *Next* button  
+3.9. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
+* CodeCommit is being for Source Control Management
+* CodeDeploy is being used for Application Deployment, and
+* CloudWatch is being used for Monitoring
+
+3.10. Click on the *Create Project* button  
+3.11. When you see the *Choose an Amazon EC2 Key Pair*, select *devops_girls* from the dropdown list, tick the acknowledgement box, and click the *Create Project* button (Normally you would make very sure you have access to this key in case you ever needed access to the EC2 instance)
+3.12. On the *It looks like this is your first time here.* screen, enter your name in the *Display Name* field, and an accessible email address in the *Email* field  
+3.13 On the *Pick how you want to edit your code* choose *Command line tools* and click the *See instructions* link  
+3.14 On the *Connect to your tools*, choose the Operating System that applies to you. For example Windows  
+3.15 Choose *HTTPS* as the Connection Method  
+3.16. Right click on the Generate Git Credentials *here* link and open the link in a new browser tab  
+3.17. Under the *HTTPS Git credentials for AWS CodeCommit* click the Generate button. Save your login details somewhere securely such as Keepass. For the purposes of this exercise, a text file will be okay  
+3.18. Go back to your other browser tab, and click the *copy* link next to the CodeCommit repository URL  
+3.19. Open up a command line terminal and navigate to a directory where you wish to clone the new repository into  
+3.20. Paste the git clone command and press enter  
+3.21. Enter your CodeCommit credentials as previously saved  
+3.22. Click the *Back* button on the AWS Choose your tools page  
+3.23. On the *Pick how you want to edit your code*, press the *Skip* button  
+3.24. Now CodeStar will start deploying your website via CodeDeploy  
+3.25. Refresh the CodeStar Dashboard to see what is happening  
+3.26. Have a look at the Commit hsitory panel, the Continuous Deployment , and the Application endpoint panel  
+3.27. Right click on the endpoint URL, and open the link in a new tab. You will see the standard AWS Blueprint template website  
+
+### Download custom static HTML file from AWS S3
+
+### Push changes to CodeCommit Repo
+
+
+
+
+
