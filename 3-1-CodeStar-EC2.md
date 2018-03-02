@@ -64,7 +64,8 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.6. Select *AWS CodeCommit* as your source code repository  
 3.7. Under the *Repository name* field, enter the same value you did in step 3.5. I.e. *firstnamelastname*  
 3.8. Click the *Next* button  
-3.9. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
+3.9.1. On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*. Choose the VPC id, and subnet that has been supplied to you. Choose a t2.micro instance.  
+3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
 * CodeCommit is being for Source Control Management
 * CodeDeploy is being used for Application Deployment, and
 * CloudWatch is being used for Monitoring
@@ -88,9 +89,27 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.26. Have a look at the Commit hsitory panel, the Continuous Deployment , and the Application endpoint panel  
 3.27. Right click on the endpoint URL, and open the link in a new tab. You will see the standard AWS Blueprint template website  
 
-### Download custom static HTML file from AWS S3
+### 4. Download custom static HTML file from AWS S3
+4.1. Open your web browser and paste in the following URL, https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/index.html  
+4.2. Click on the new tab, then right click anywhere on the webpage and select *Save as...*  
+4.3. Change thje filename to be index.html and save it in the webpage directory of your cloned git project repository on your workstation. For example, sallytran/webpage/index.html  
 
-### Push changes to CodeCommit Repo
+### 5. Push changes to CodeCommit Repo
+5.1. In your command terminal, navigate to the home (root) directory of your CodeCommit repository on your workstation. For example:
+`cd C:\sallytran`  
+5.2. 'Add' the modified files to be ready for git commit. Enter this command:
+`git add .`  
+5.3. Commit the changes to your local git repository, inculding a comment. Enter this command:
+`git commit -m "Replaced the index.html file"`  
+5.4. Push the changes to the AWS CodeCommit hosted repository:
+`git push`  
+5.5. Enter your CodeCommit Git username  
+5.6. Enter your CodeCommit Git password  
+
+### 6. Observe CodeDeploy redeploy your website with the changes
+6.1. Go back to your web browser and open up the AWS CodeStar Dashboard for your project, and refresh the page (Ctrl-F5)
+6.2. Have a look at the Commit hsitory panel, the Continuous Deployment , and the Application endpoint panel  
+6.3. Right click on the endpoint URL, and open the link in a new tab. You will see your newly customised website has been deployed to the cloud!
 
 
 
