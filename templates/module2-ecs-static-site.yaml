@@ -73,7 +73,9 @@ Resources:
     Properties:
         VPCZoneIdentifier: 
             - Fn::ImportValue: 
-                !Sub "${SharedParentStack}-PublicSubnet"
+                !Sub "${SharedParentStack}-PublicSubnet1"
+            - Fn::ImportValue: 
+                !Sub "${SharedParentStack}-PublicSubnet2"
         LaunchConfigurationName: !Ref ECSLaunchConfiguration
         MinSize: !Ref ClusterSize
         MaxSize: !Ref ClusterSize
