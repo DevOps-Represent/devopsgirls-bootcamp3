@@ -358,13 +358,13 @@ Resources:
           HostPort: 80
       - Name: busybox
         Cpu: 10
-        Command: ['/bin/sh -c "while true; do echo ''<html> <head> <title>Amazon ECS
-            Sample App</title> <style>body {margin-top: 40px; background-color: #333;}
-            </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon
-            ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now
-            running on a container in Amazon ECS.</p>'' > top; /bin/date > date ;
-            echo ''</div></body></html>'' > bottom; cat top date bottom > /usr/local/apache2/htdocs/index.html
-            ; sleep 1; done"']
+        Command: ['/bin/sh -c "while true; do echo ''<html> <head><TITLE>DevopsGirls Bootcamp 3</TITLE>
+                   <link rel="icon" type="image/png" href="https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/DevOpsGirlsLogo.png">
+                   </head> <style> body {background: linear-gradient(to right, #33ccff 0%, #ff99cc 50%);} </style>
+                   <body> <center><h1 style="font-family:verdana"> Congratulations! you have been deployed a static website using a Docker container on AWS Elastic Container Service (ECS) </h1></center> <center><p style="font-family:verdana"> </p></center>
+                   <center><img src="https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/DevOpsGirls.png" alt="DevOpsGirls" width="492" height="328"></center> 
+                   <center><img src="https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/Thumbs-Up.svg" alt="Thumb-Up" width="150" height="150"></center> <center><img src="https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/DevOpsCarsalesLogo.png" alt="Carssales Logo" width="200" height="100"></center>'' > top; /bin/date > date ; echo ''</div></body></html>'' > bottom; cat top date bottom > /usr/local/apache2/htdocs/index.html
+                  ; sleep 1; done"']
         EntryPoint: [sh, -c]
         Essential: false
         Image: busybox

@@ -83,5 +83,13 @@ As we mention in the previous step, you will create the whole infrastructure usi
 In the permissions sections, choose the default existing IAM role and leave the rest information with the default values, and click next.
 
 2.2.6 In the **review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the previous button, or if everything is ok click in the create one to create the ECS cluster using the Cloudformation template.
+And at the end of the page you have to check the box about "I acknowledge that AWS CloudFormation might create IAM resources."
 
 ![3-2-2-6-review.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-6-review.png?raw=true)
+
+2.2.7 The Stack creation steps, is going to take about 5 - 8 minutes. 
+
+![3-2-2-8-Creating_Stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-8-Creating_Stack.png?raw=true)
+
+
+One that is done and ready you have to see something like this
