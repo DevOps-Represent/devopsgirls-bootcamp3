@@ -92,4 +92,26 @@ And at the end of the page you have to check the box about "I acknowledge that A
 ![3-2-2-8-Creating_Stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-8-Creating_Stack.png?raw=true)
 
 
-One that is done and ready you have to see something like this
+2.2.8 One it has been created and ready you have to see something like this:
+
+![3-2-2-9-Stack_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-9-Stack_Created.png?raw=true)
+
+2.2.9 Another important steps when the stack is ready is check the resources or elements that it has created. To do this, go to the **Resources** tab and you will be able to know all about the resources that have been created using the **Cloudformation template** in the new **Stack**
+
+![3-2-2-10-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-Resources_Created.png?raw=true)
+
+
+2.2.10 Another way to do that (and maybe a more userfriendly way) is check the template in the **designer** application and it will show you a diagram with all the resources that have been created. To do it, check the Stack Name box that you want to review, and in the **Actions button** choose the *View/Edit template in Designer*:
+
+
+![3-2-2-10-b-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-b-Resources_Created.png?raw=true)
+
+
+2.2.11 In the designer page you can check out the Cloudformation template definition as well as the diagram that shows you the elements that have been created using the template.
+
+
+![3-2-2-10-c-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-c-Resources_Created.png?raw=true)
+
+In this case the diagram looks like this:
+
+![3-2-2-10-c-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-cf-template-diagram.png?raw=true)
