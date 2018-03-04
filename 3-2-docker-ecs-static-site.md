@@ -120,7 +120,7 @@ In this case the diagram looks like this:
 ![3-2-2-11-a-Searching_ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-a-Searching_ECS_Cluster.png?raw=true)
 
 
-2.2.13 In the **Cluster** page your will be able to see your cluster that contain the name of the stack following a random sequence namber
+2.2.13 In the **Cluster** page your will be able to see your cluster that contain the name of the stack following a random sequence number
 
 ![3-2-2-11-ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Cluster.png?raw=true)
 
@@ -134,8 +134,8 @@ In this moment your aim is find the place where you can get the IP or URL of the
 
 ![3-2-2-11-ECS_Service_Task](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service_Task.png?raw=true)
 
-2.2.16 Under the task tab you, click on the task that is associated to your service under the **Task** column.
-Now you are almost there ;)!, remeber that we are looking for the web server information that is configured in a container, so in the bottom of the page you will find a container called simple-app and it will give you the information that you are looking for. 
+2.2.16 Under the task tab, click on the task that is associated to your service in the **Task** column.   
+Now you are almost there ;)!, remeber that you are looking for the web server information that is configured in a container, so in the bottom of the page you will find a container called **simple-app** and it will give you the information that you are looking for. 
 
 ![3-2-2-11-ECS_Service_Task_Container](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service_Task_Container.png?raw=true)
 
@@ -144,6 +144,6 @@ Now you are almost there ;)!, remeber that we are looking for the web server inf
 ![3-2-2-12-ECS_Task_Container_info](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-12-ECS_Task_Container_info.png?raw=true)
 
 
-2.2.18 Click on the **External Link** information and congratulation! you will see the static web page that you have built using the Cloudformation.
+2.2.18 Click on the **External Link** information and congratulation! :) you will see the static web page that you have built using the Cloudformation.
 
 ![3-2-2-13-Container_web](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-13-Container_web.png?raw=true)
