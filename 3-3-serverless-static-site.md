@@ -90,3 +90,23 @@ Choose all the files, click on "More" and choose "Make Public". When prompted, c
 Click on the public URL of the S3 bucket
 
 ![Website](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-10-s3-public-endpoint.png?raw=true)
+
+## Set up continuous deployment of the site
+
+### 1.) Go to Services > CodeBuild, then click on "Create Project"
+
+### 2.) In the section "Configure your Project", enter a unique "Project name". Something like `yourname-module3-devopsgirls`, and enter a "Description". In the section "Source: What to build", choose `AWS CodeCommit` as the "Source provider", and choose the CodeCommit repository you created in Module 1. 
+
+![CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-11-create-codebuild-project.png?raw=true)
+
+### 3.) In the "Environment: How to build" section, choose/enter the following values for the fields
+- Environment: How to build
+** Environmnet image - `Use an image managed by AWS CodeBuild`
+- Operating System - `Ubuntu`
+- Runtime - `Base`
+- Runtime version - `aws/codebuild/ubuntu-base:14.04`
+- Privileged - Do not select check box
+- Build specification - `Insert build commands`
+- Build commands - `aws s3 sync --acl public-read . s3://yourname-devopsgirls-site/ --exclude .git` [Update the command with the bucket name of your site you created in Section 1]
+- Certificate - `Do not install any certificate`
+- 
