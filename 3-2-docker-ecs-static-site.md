@@ -50,9 +50,13 @@ Also, in the template is included a docker container definition that contain a w
 
 2.2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
 
-2.2.1 Login with your credential to the AWS account
+2.2.1 Login with your credential to the AWS account, you have to do the same steps of the Module 1:
 
-2.2.2  Under the AWS services search field, search for *Cloudformation*, and click on the **Cloudformation** auto drop down element.
+2.2.1.1 Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.  
+
+2.2.1.2 Ensure you are in the right AWS region. On the top-right side, make sure you select Sydney.
+
+2.2.2 Once you have successfully logged in, under the AWS services search field, search for *Cloudformation*, and click on the **Cloudformation** auto drop down element.
 
 
 2.2.2 In the screen's upper left corner click on the blue button 'Create Stack'.
