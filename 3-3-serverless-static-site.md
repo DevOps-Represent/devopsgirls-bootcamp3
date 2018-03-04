@@ -133,34 +133,44 @@ Note down the public URL of the S3 bucket and click on URL
 ![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-15-modify-codebuild-iam-policy.png?raw=true)
 
 ### 7.) Click on "Add additional permissions"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-16-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-16-modify-codebuild-iam-policy.png?raw=true)
 
 ### 8.) In "Select a service below", type S3, and choose the S3 service
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-17-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-17-modify-codebuild-iam-policy.png?raw=true)
 
 ### 9.) In "Specify the actions allowed in S3" choose `PutObject`, `PutObjectAcl` and `PutObjectVersionAcl` as shown in the image below
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-18-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-18-modify-codebuild-iam-policy.png?raw=true)
 
 ### 10.) In the "Resources" section, choose the "Specific" radio button and click on "Add ARN". In the popup, for "Bucket name" enter the name of the bucket of your site you created in Section 1, and click on "Add"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-19-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-19-modify-codebuild-iam-policy.png?raw=true)
 
 ### 11.) Leave the field "Request conditions" at its defailt, and click on "Review policy"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-20-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-20-modify-codebuild-iam-policy.png?raw=true)
 
 ### 12.) Review the changes and click on "Save changes"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-21-modify-codebuild-iam-policy.png?raw=true)
+
+![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-21-modify-codebuild-iam-policy.png?raw=true)
 
 ### 13.) Go back to Services > CodeBuild, then click on the Build Project you created in the steps above.
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-22-run-codebuild-project.png?raw=true)
+
+![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-22-run-codebuild-project.png?raw=true)
 
 ### 14.) Click on "Start Build"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-23-run-codebuild-project.png?raw=true)
+
+![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-23-run-codebuild-project.png?raw=true)
 
 ### 15.) In the "Start new build" page, leave the default values for "Project name", "Source provider", "Repository" and "Git clone depth". For "Branch" choose `master`, and leave "Source version" at the default value populated for your branch. Click on "Start Build"
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-24-run-codebuild-project.png?raw=true)
+
+![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-24-run-codebuild-project.png?raw=true)
 
 ### 16.) The build should run successfully, and you should be able to see build logs like shown below
-(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-25-run-codebuild-project.png?raw=true)
+
+![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-25-run-codebuild-project.png?raw=true)
 
 ### 17.) Go to the public URL of your S3 bucket, and you should see your web site.
 
