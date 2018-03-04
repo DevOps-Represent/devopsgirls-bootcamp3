@@ -115,3 +115,5 @@ And at the end of the page you have to check the box about "I acknowledge that A
 In this case the diagram looks like this:
 
 ![3-2-2-10-c-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-cf-template-diagram.png?raw=true)
+
+2.2.12 Now in the time to check the ECS that has being created with the Cloudformation template. To do that, under the AWS services search field, search for *Elastic Container Service*, and click on the *Elastic Container Service* auto drop down element.
