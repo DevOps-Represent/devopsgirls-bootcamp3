@@ -45,9 +45,10 @@ WORKDIR /usr/local/apache2/htdocs
 COPY s3://devopsgirls1/index.html .
 ```
 
-### 2.2 Creating the ECS using Cloudformation template
+### 2.2 Creating the Elastic Container Service (ECS) using a Cloudformation template
 
-As we mention in the previous step, you will create the whole infrastructure using the AWS Cloudformation service which allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications.
+As we mention in the previous step, you will create the whole infrastructure using the AWS Cloudformation service which allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications.  
+Also, in the template is included a docker container definition that contain a web server to include an HTML static web page. This web page is going to be the first check point of the exercise, since after that in the next part you will configure a **Codepipeline** to deploy a new release of the web page.
 
 2.2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
 
@@ -123,4 +124,21 @@ In this case the diagram looks like this:
 
 2.2.13 In the **Cluster** page your will be able to see your cluster that contain the name of the stack following a random sequence namber
 
-![3-2-2-11-a-Searching_ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Cluster.png?raw=true)
+![3-2-2-11-ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Cluster.png?raw=true)
+
+2.2.14 Click on the *cluster name* and you will be redirect to the cluster details configuration page. Here you can see information, for instance, about the number of the containers that are configured in the cluster, as well as, the status of cluster, service and task(s).   
+(A service allows you to run and maintain tasks (containers) in a cluster.)
+
+![3-2-2-11-ECS_Service](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service.png?raw=true)
+
+2.2.15 Click on your *Service Name* and the **Service** page will show up. Here you can see more information about the service configuration.  
+In this moment your aim is find the place where you can get the IP or URL of the container that contain the web server, which, in turn, contain the static web page.
+
+![3-2-2-11-ECS_Service_Task](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service_Task.png?raw=true)
+
+2.2.16 Under the task tab you, click on the task that is associated to your service under the **Task** column.
+Now you are almost there ;)!, remeber that we are looking for the web server information that is configured in a container, so in the bottom of the page you will find a container called simple-app and it will give you the information that you are looking for. 
+
+![3-2-2-11-ECS_Service_Task_Container](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service_Task_Container.png?raw=true)
+
+2.2.17 In the **Task** page, under the **Container** section click over the **simple-app** and you will see all the details about the container, and also the one that you are looking for that correspond to the value providing in the **External Link** information.
