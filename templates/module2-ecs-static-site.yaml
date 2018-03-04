@@ -362,7 +362,7 @@ Resources:
             Sample App</title> <style>body {margin-top: 40px; background-color: #333;}
             </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon
             ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now
-            running on a container in Amazon ECS.</p>'' > top; /bin/date > date ;
+            running on a container in Amazon ECS.</p><center><img src="https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp/master/images/devopsgirls.jpg" alt="DevOpsGirls" width="492" height="328"></center>'' > top; /bin/date > date ;
             echo ''</div></body></html>'' > bottom; cat top date bottom > /usr/local/apache2/htdocs/index.html
             ; sleep 1; done"']
         EntryPoint: [sh, -c]

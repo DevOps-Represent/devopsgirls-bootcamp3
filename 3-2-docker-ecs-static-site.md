@@ -141,4 +141,9 @@ Now you are almost there ;)!, remeber that we are looking for the web server inf
 
 ![3-2-2-11-ECS_Service_Task_Container](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Service_Task_Container.png?raw=true)
 
-2.2.17 In the **Task** page, under the **Container** section click over the **simple-app** and you will see all the details about the container, and also the one that you are looking for that correspond to the value providing in the **External Link** information.
+2.2.17 In the **Task** page, under the **Container** section click over the **simple-app**, you will see all the details about the container, and also the one that you are looking for that correspond to the value providing in the **External Link** information.
+
+![3-2-2-12-ECS_Task_Container_info](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-12-ECS_Task_Container_info.png?raw=true)
+
+
+2.2.18 Click on the **External Link** information and congratulation! you will see the static web page that you have built using the Cloudformation.
