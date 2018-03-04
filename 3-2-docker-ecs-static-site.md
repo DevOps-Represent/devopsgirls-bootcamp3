@@ -116,4 +116,11 @@ In this case the diagram looks like this:
 
 ![3-2-2-10-c-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-cf-template-diagram.png?raw=true)
 
-2.2.12 Now in the time to check the ECS that has being created with the Cloudformation template. To do that, under the AWS services search field, search for *Elastic Container Service*, and click on the *Elastic Container Service* auto drop down element.
+2.2.12 Now is the time to check the ECS that has being created in the stack uning sthe Cloudformation template. To do that, under the AWS services search field, search for *Elastic Container Service*, and click on the *Elastic Container Service* auto drop down element.
+
+![3-2-2-11-a-Searching_ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-a-Searching_ECS_Cluster.png?raw=true)
+
+
+2.2.13 In the **Cluster** page your will be able to see your cluster that contain the name of the stack following a random sequence namber
+
+![3-2-2-11-a-Searching_ECS_Cluster](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-11-ECS_Cluster.png?raw=true)
