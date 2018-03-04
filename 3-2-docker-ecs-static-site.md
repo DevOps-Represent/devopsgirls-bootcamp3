@@ -147,3 +147,5 @@ Now you are almost there ;)!, remeber that we are looking for the web server inf
 
 
 2.2.18 Click on the **External Link** information and congratulation! you will see the static web page that you have built using the Cloudformation.
+
+![3-2-2-13-Container_web](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-13-Container_web.png?raw=true)
