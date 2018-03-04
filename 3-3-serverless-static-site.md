@@ -87,7 +87,7 @@ Choose all the files, click on "More" and choose "Make Public". When prompted, c
 
 
 ### 4.) Access the website
-Click on the public URL of the S3 bucket
+Note down the public URL of the S3 bucket and click on URL
 
 ![Website](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-10-s3-public-endpoint.png?raw=true)
 
@@ -107,7 +107,7 @@ Click on the public URL of the S3 bucket
   - Runtime version - `aws/codebuild/ubuntu-base:14.04`
   - Privileged - Do not select check box
   - Build specification - `Insert build commands`
-  - Build commands - `aws s3 sync --acl public-read . s3://yourname-devopsgirls-site/ --exclude .git` [Update the command with the bucket name of your site you created in Section 1]
+  - Build commands - `aws s3 sync --acl public-read . s3://yourname-devopsgirls-site/ --exclude *.git*` [Update the command with the bucket name of your site you created in Section 1]
   - Certificate - `Do not install any certificate`
 - Artifacts: Where to put the artifacts from this build project
   - Type - `No artifacts`
@@ -158,3 +158,10 @@ Click on the public URL of the S3 bucket
 
 ### 15.) In the "Start new build" page, leave the default values for "Project name", "Source provider", "Repository" and "Git clone depth". For "Branch" choose `master`, and leave "Source version" at the default value populated for your branch. Click on "Start Build"
 (https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-24-run-codebuild-project.png?raw=true)
+
+### 16.) The build should run successfully, and you should be able to see build logs like shown below
+(https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-25-run-codebuild-project.png?raw=true)
+
+### 17.) Go to the public URL of your S3 bucket, and you should see your web site.
+
+### 18.) Your website is now set to be continuously deployed. If you make a modification to your website files, and push it to your CodeCommit repository, you should see a new run of your CodeBuild project which should successfully deploy the change to S3.
