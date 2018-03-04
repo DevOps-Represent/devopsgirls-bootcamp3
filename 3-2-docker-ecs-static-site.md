@@ -2,8 +2,8 @@
 
 ## Learning Objectives
 
-● Learn about Containers technologies and understand their appeal to developers and how
-to deploy, host and scale containers using AWS tools.
+● Learn about Containers technologies and understand their appeal to developers and how 
+to deploy, host and scale containers using AWS tools.  
 ● Use Cloudformation to create the prerequisite resources required by ECS . This includes
 creating a Cluster , a Service , Tasks (using Cloudformation)    
 ● This module will go over creating a Docker container (using resources from S3 ),
