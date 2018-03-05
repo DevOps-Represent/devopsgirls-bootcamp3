@@ -29,9 +29,9 @@ You will need the following software installed on your workstation:
 
 **How to Install Git Client**
 
-- For **Windows** download [Here](https://gitforwindows.org/) the latest installer. Once the file has been download successfully, you have to start the installation process configuring it with the default options.  
+- For **Windows** download [here](https://gitforwindows.org/) the latest installer. Once the file has been download successfully, double click on the downloaded file to start the installation process, configuring it with the default options.  
  
-- For **macOS** download the latest installer from [here](https://sourceforge.net/projects/git-osx-installer/files/). Once the file has been download successfully, you have to start the installation process configuring it with the default options.  
+- For **macOS** download the latest installer from [here](https://sourceforge.net/projects/git-osx-installer/files/). Once the file has been download successfully, start the installation process configuring it with the default options.  
 
 - For **Debian/Ubuntu** using apt-get, open a terminal command line and run:
 
@@ -40,7 +40,7 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-- For **all platform** to confirm the installation was successful by typing:
+- For **all platforms**, confirm the installation was successful by typing:
 
 ```javascript
 git --version
