@@ -21,7 +21,9 @@
 - Download static files from an AWS S3 bucket. These files will be used to customise the static website
 - Commit and push downloaded static files to CodeCommit repository using Git
 - Observe CodeDeploy trigger a deployment from the detected Git push
-- Marvel at your website available for the world to see
+- Marvel at your website available for the world to see  
+
+![Git to EC2](/images/3-1-ec2-static-site/CCtoEC2.svg) 
 
 ## Prerequisites
 You will need the following software installed on your workstation:  
