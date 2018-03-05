@@ -53,6 +53,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 ## You'll be a CodeStar in no time
 ### 1. Log in to AWS
 1.1. Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.
+![AWS Signin](/images/3-1-ec2-static-site/1_awssigning.png)
 ### 2. Ensure you're in the right AWS region
 2.1. On the top-right side, make sure you select *Sydney*.
 ### 3. Create CodeStar Project
