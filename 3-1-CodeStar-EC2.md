@@ -53,29 +53,32 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 ## You'll be a CodeStar in no time
 ### 1. Log in to AWS
 1.1. Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.
-![AWS Signin](/images/3-1-ec2-static-site/1_awssignin.png)
+![AWS Signin](/images/3-1-ec2-static-site/1_awssignin.png)  
 ### 2. Ensure you're in the right AWS region
 2.1. On the top-right side, make sure you select *Sydney*.  
-![AWS Signin](/images/3-1-ec2-static-site/region.png)
+![AWS Signin](/images/3-1-ec2-static-site/region.png)  
 ### 3. Create CodeStar Project
 3.1.  Under the AWS services search field, search for *codestar*, and click on the CodeStar auto drop down element  
 3.2. Click on the '+ Create a new project' link  
-![CodeStar Create Project](/images/3-1-ec2-static-site/2_createcodestarproj.png)
+![CodeStar Create Project](/images/3-1-ec2-static-site/2_createcodestarproj.png)  
 3.3. On the left hand side, under Application Category, select *Static Website*  
 3.4. Under *Choose a project template*, click on 'HTML - Static Website - Amazon EC2'  
 3.5. Under the *Project name* field enter your first name, and last name without a space. For example *sallytran*  
 3.6. Select *AWS CodeCommit* as your source code repository  
 3.7. Under the *Repository name* field, enter the same value you did in step 3.5. I.e. *firstnamelastname*  
 3.8. Click the *Next* button  
-![AWS Signin](/images/3-1-ec2-static-site/3_projectname.png)
+![AWS Signin](/images/3-1-ec2-static-site/3_projectname.png)  
 3.9.1. On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*. Choose the VPC id, and subnet that has been supplied to you. Choose a t2.micro instance.  
+![AWS Signin](/images/3-1-ec2-static-site/5_editec2options.png)  
 3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
 * CodeCommit is being for Source Control Management
 * CodeDeploy is being used for Application Deployment, and
 * CloudWatch is being used for Monitoring
 
 3.10. Click on the *Create Project* button  
-3.11. When you see the *Choose an Amazon EC2 Key Pair*, select *devops_girls* from the dropdown list, tick the acknowledgement box, and click the *Create Project* button (Normally you would make very sure you have access to this key in case you ever needed access to the EC2 instance)
+![AWS Signin](/images/3-1-ec2-static-site/4_reviewproject.png)  
+3.11. When you see the *Choose an Amazon EC2 Key Pair*, select *devops_girls* from the dropdown list, tick the acknowledgement box, and click the *Create Project* button (Normally you would make very sure you have access to this key in case you ever needed access to the EC2 instance)  
+![AWS Signin](/images/3-1-ec2-static-site/6_chooseec2key.png)  
 3.12. On the *It looks like this is your first time here.* screen, enter your name in the *Display Name* field, and an accessible email address in the *Email* field  
 3.13 On the *Pick how you want to edit your code* choose *Command line tools* and click the *See instructions* link  
 3.14 On the *Connect to your tools*, choose the Operating System that applies to you. For example Windows  
