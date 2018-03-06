@@ -229,7 +229,8 @@ Resources:
     DeletionPolicy: Delete
     Properties:
         AccessControl: Private   
-                 
+        VersioningConfiguration:
+          Status: Enabled
   Module2CodePipelineRolePolicy:
     Type: AWS::IAM::Policy
     Properties:
@@ -237,36 +238,25 @@ Resources:
         PolicyDocument:
           Statement:
             - Action:
-                - s3:GetObject
-                - s3:PutObject
-                - s3:GetObjectVersion
-                - s3:GetBucketVersioning
-              Resource:
-                - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}'
-                - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}/*'
-              Effect: Allow
-            - Action:
-                - codebuild:BatchGetBuilds
-                - codebuild:StartBuild
+                - s3:*
               Resource: '*'
               Effect: Allow
             - Action:
-                - ecs:DescribeServices
-                - ecs:DescribeTaskDefinition
-                - ecs:DescribeTasks
-                - ecs:ListTasks
-                - ecs:RegisterTaskDefinition
-                - ecs:UpdateService
-              Resource: !Sub 'arn:aws:ecs:${AWS::Region}:${AWS::AccountId}:cluster/${ECSCluster}'
+                - codebuild:*
+              Resource: '*'
+              Effect: Allow
+            - Action:
+                - ecs:*
+              Resource: '*'
               Effect: Allow            
             - Action:
-                - codecommit:GetBranch
-                - codecommit:GetCommit 
-                - codecommit:UploadArchive
-                - codecommit:GetUploadArchiveStatus
-                - codecommit:CancelUploadArchive
+                - codecommit:*
               Resource: '*'
               Effect: Allow          
+            - Action:
+                - ec2:*
+              Resource: '*'
+              Effect: Allow
         Roles:
         - !Ref 'Module2CodePipelineRole'
   Module2CodePipelineRole:
@@ -281,6 +271,21 @@ Resources:
             - codepipeline.amazonaws.com
           Action: sts:AssumeRole
       Path: /
+  Module2ArtifactBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Module2ArtifactBucket
+      PolicyDocument:
+        Statement:
+        - Sid: ''
+          Effect: Allow
+          Principal: 
+            AWS:
+              - !Join ['', [!Sub 'arn:aws:iam::${AWS::AccountId}:role/', !Ref 'Module2CodePipelineRole']]
+          Action: s3:*
+          Resource: 
+          - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}'
+          - !Sub 'arn:aws:s3:::${Module2ArtifactBucket}/*'
   Module2CodeBuildRole:
     Type: AWS::IAM::Role
     Properties:
@@ -327,6 +332,10 @@ Resources:
               Resource: '*'
               Action:
                 - ecr:GetAuthorizationToken                   
+            - Effect: Allow
+              Resource: '*'
+              Action:
+                - ec2:*
         Roles:
           - !Ref 'Module2CodeBuildRole'    
   CloudwatchLogsGroup:
@@ -340,9 +349,9 @@ Resources:
       Family: !Join ['', [!Ref 'AWS::StackName', -ecs-demo-app]]
       ContainerDefinitions:
       - Name: simple-app
-        Cpu: '10'
+        Cpu: '0'
         Essential: 'true'
-        Image: httpd:2.4
+        Image: httpd:alpine
         Memory: '128'
         LogConfiguration:
           LogDriver: awslogs
@@ -350,40 +359,15 @@ Resources:
             awslogs-group: !Ref 'CloudwatchLogsGroup'
             awslogs-region: !Ref 'AWS::Region'
             awslogs-stream-prefix: ecs-demo-app
-        MountPoints:
-        - ContainerPath: /usr/local/apache2/htdocs
-          SourceVolume: my-vol
         PortMappings:
         - ContainerPort: 80
           HostPort: 80
-      - Name: busybox
-        Cpu: 10
-        Command: ['/bin/sh -c "while true; do echo ''<html> <head> <title>Amazon ECS
-            Sample App</title> <style>body {margin-top: 40px; background-color: #333;}
-            </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon
-            ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now
-            running on a container in Amazon ECS.</p><center><img src="https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp/master/images/devopsgirls.jpg" alt="DevOpsGirls" width="492" height="328"></center>'' > top; /bin/date > date ;
-            echo ''</div></body></html>'' > bottom; cat top date bottom > /usr/local/apache2/htdocs/index.html
-            ; sleep 1; done"']
-        EntryPoint: [sh, -c]
-        Essential: false
-        Image: busybox
-        Memory: 128
-        LogConfiguration:
-          LogDriver: awslogs
-          Options:
-            awslogs-group: !Ref 'CloudwatchLogsGroup'
-            awslogs-region: !Ref 'AWS::Region'
-            awslogs-stream-prefix: ecs-demo-app
-        VolumesFrom:
-        - SourceContainer: simple-app
-      Volumes:
-      - Name: my-vol
   ECSService:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Ref 'ECSCluster'
       DesiredCount: '1'
       TaskDefinition: !Ref 'ESCTaskDef'
-
-  
+      DeploymentConfiguration:
+        MaximumPercent: 200
+        MinimumHealthyPercent: 0
