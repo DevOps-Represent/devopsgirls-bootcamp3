@@ -204,7 +204,7 @@ You just need to wait for the process to be completed (it could take about 10 mi
 
 ![3-2-3-8-b-CodePipeline_Completed](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-8-b-CodePipeline_Completed.png?raw=true)
 
-And CONGRATULATION again, you have deployed a new release using AWS CodePipeline
+And CONGRATULATIONS again, you have deployed a new release using AWS CodePipeline
 
 ![3-2-3-8-b-CodePipeline_Completed](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-8-c-CodePipeline_NewDepoyment.png?raw=true)
 
