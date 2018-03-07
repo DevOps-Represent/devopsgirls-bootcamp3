@@ -79,8 +79,8 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 | 214953911892 | vpc-c53a98a2 | subnet-f74bd3be | subnet-6ec3ac09 |
 
 ![Edit EC2 Options](/images/3-1-ec2-static-site/5_editec2options.png)  
-3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case, you should see that:
-* CodeCommit is being for Source Control Management
+3.9.2. On the *Review project details* page, observe the AWS tools that will be utilised and connected by CodeStar. In this case, you should see that:
+* CodeCommit is being used for Source Control Management
 * CodeDeploy is being used for Application Deployment, and
 * CloudWatch is being used for Monitoring
 
@@ -115,8 +115,18 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 4.1. Open your web browser and paste in the following URL, https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/index.html  
 4.2. Click on the new tab, then right click anywhere on the webpage and select *Save as...*  
 4.3. Change the filename to be index.html and save it in the webpage directory of your cloned git project repository on your workstation. For example, sallytran/webpage/index.html  
-![Save index.html file](/images/3-1-ec2-static-site/11_saveindex.png)
-
+![Save index.html file](/images/3-1-ec2-static-site/11_saveindex.png)  
+4.4 In a similar manner, save https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/DevOpsGirls.png and https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/Thumbs-Up.svg. Make sure you don't change their names.  
+4.5 Create an `index_files` subdirectory and move DevOpsGirls.png and Thumbs-Up.svg into it. `index_files` should be at the same level as `index.html`, i.e. you should end up with this file structure:
+```
+          └── webpage
+              ├── index.html
+              ├── index_files
+              │   ├── DevOpsGirls.png
+              │   └── Thumbs-Up.svg
+              ├── (other things...)
+```
+    
 ### 5. Push changes to CodeCommit Repo
 5.1. In your command terminal, navigate to the home (root) directory of your CodeCommit repository on your workstation. For example:
 `cd C:\sallytran`  
