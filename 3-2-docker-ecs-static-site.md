@@ -17,7 +17,7 @@ this approach.
 ● AWS account  
 ● Same site files from previous module  
 
-## 2.- Deploy a static website using a Docker container on AWS ECS
+## Deploy a static website using a Docker container on AWS ECS
 
 In this module you will deploy a static website using a [Docker container](https://www.docker.com/what-container) on Amazon Elastic Container Service ([Amazon ECS](https://aws.amazon.com/ecs/)). The main aim of this configuration is that you can use it to run Docker applications on a scalable cluster that allows you, for instance, to run the applications easily by eliminating the need for you to install, operate, and scale your own cluster management infrastructure or to scale your containers up or down to meet your application's capacity requirement.
 
@@ -25,13 +25,13 @@ If you are imagining how it could be, it should look like this:
 
 ![ECS_Docker_Container_Diagram](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/ECS_Docker_Container.png?raw=true)
 
-### 2.1 Introduction to the Dockerfile definiton
+### Introduction to the Dockerfile definiton
 
 Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using **docker build** users can create an automated build that executes several command-line instructions in succession.
 
 *For further information about Dockerfile please visit [this link](https://docs.docker.com/engine/reference/builder/).
 
-2.1.1 In this exercise you will use a *Dockerfile* that it has already the necessaries steps that the container definition needs and also is ready to be use it in the [CloudFormation](https://aws.amazon.com/cloudformation/) template that will create all the infrastructure for you, as the container definition, the task definition, the service and the cluster configuration.
+In this exercise you will use a *Dockerfile* that it has already the necessaries steps that the container definition needs and also is ready to be use it in the [CloudFormation](https://aws.amazon.com/cloudformation/) template that will create all the infrastructure for you, as the container definition, the task definition, the service and the cluster configuration.
 
 The *Dockerfile* for this exercise looks like this:
 
@@ -41,37 +41,33 @@ FROM httpd:alpine
 COPY ./index.html /usr/local/apache2/htdocs/index.html
 ```
 
-### 2.2 Creating the Elastic Container Service (ECS) using a Cloudformation template
+### Creating the Elastic Container Service (ECS) using a Cloudformation template
 
 As we mention in the previous step, you will create the whole infrastructure using the AWS Cloudformation service which allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications.  
 Also, in the template is included a docker container definition that contain a web server to include an HTML static web page. This web page is going to be the first check point of the exercise, since after that in the next part you will configure a **Codepipeline** to deploy a new release of the web page.
 
-2.2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
+2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
 
-2.2.1 Login with your credential to the AWS account, you have to do the same steps of the Module 1:
+2.1 Login with your credential to the AWS account, you have to do the same steps of the Module 1:
 
-2.2.1.1 Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.  
+2.1.1 Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.  
 
-2.2.1.2 Ensure you are in the right AWS region. On the top-right side, make sure you select Sydney.
+2.1.2 Ensure you are in the right AWS region. On the top-right side, make sure you select **(Asia Pacific (Sydney))**. Once you have successfully logged in, under the AWS services search field, search for *Cloudformation* and click on the **Cloudformation** auto drop down element.
 
-2.2.2 Once you have successfully logged in, under the AWS services search field, search for *Cloudformation*, and click on the **Cloudformation** auto drop down element.
-
-
-2.2.2 In the screen's upper left corner click on the blue button 'Create Stack'.
+2.2 In the screen's upper left corner click on the blue button **'Create Stack'**.
 
 ![3-2-2-2-create-cf-stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-2-create-cf-stack.png?raw=true)
 
-2.2.3 In the **Select Template** page, under the section *Choose a template* click "Browse.." to choose yaml template downloaded before, and click "next" (*module2-ecs-static-site.yaml*)
+2.3 In the **Select Template** page, under the section *Choose a template* click "Browse.." to choose **yaml** template downloaded before (*module2-ecs-static-site.yaml*), and click "next" 
 
 ![3-2-2-3-select-template](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-3-select-template.png?raw=true)
 
-
-2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, last name without a space following the **-cf-ecs** string, as well as the name of the **StackPArentStack** in this case must be *DevOpsGirlsVPC* as shown in the following image.  
-Leave the rest of the information with the default values.
+2.4 Under the **Specify Details** page, in the *Stack name* field enter your *first name, last name* **without a space** following the **-cf-ecs** string, as well as the name of the **StackPArentStack** that in this case must be *DevOpsGirlsVPC* as shown in the image below.  
+Leave the rest of the information with the default values.  
 
 ![3-2-2-4-specify-datails](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-4-specify-datails.png?raw=true)
 
-2.2.5 In the **Options** page specify the following tags:
+2.5 In the **Options** page specify the following tags:
 
 ![3-2-2-5-options-page](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-5-options-page.png?raw=true)
 
@@ -82,23 +78,23 @@ Leave the rest of the information with the default values.
 |Workshop|DevopsGirls|
 |Resource|ECS Cloudformation|
 
-Once you have completed the tags section, leave the remain information with the default values, and click next.
+Once you have completed the *tags section*, leave the remain information with the default values and click next.
 
-2.2.6 In the **review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the previous button, or if everything is **ok** click in the create button to create the ECS cluster using the Cloudformation template.  
-Also, at the end of the page you have to **check** the box about *"I acknowledge that AWS CloudFormation might create IAM resources."*
+2.6 In the **Review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the **previous** button, or if everything is as you are expecting click in the **create** button to create the *ECS cluster* using a *Cloudformation template*.  
+Another important step is at the end of the page you must to **check** the box about *"I acknowledge that AWS CloudFormation might create IAM resources."*
 
 ![3-2-2-6-review.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-6-review.png?raw=true)
 
-2.2.7 The Stack creation steps, is going to take about 5 - 8 minutes. 
+2.7 The Stack creation steps is going to take about *5 - 9* minutes (or a little bit more depending the case). 
 
 ![3-2-2-8-Creating_Stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-8-Creating_Stack.png?raw=true)
 
 
-2.2.8 Once it has been created and ready you have to see something like this:
+2.8 Once it has been created and ready, you have to see something like this:
 
 ![3-2-2-9-Stack_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-9-Stack_Created.png?raw=true)
 
-2.2.9 Another important steps when the stack is ready is to check the resources or elements that it has created. To do that, go to the **Resources** tab and you will be able to know all about the resources that have been created using the **Cloudformation template** in the new **Stack**
+2.9 Another important steps when the stack is ready is to check the resources or elements that it has created. To do that, go to the **Resources** tab and you will be able to know all about the resources that have been created using the **Cloudformation template** in the new **Stack**
 
 ![3-2-2-10-Resources_Created](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-10-Resources_Created.png?raw=true)
 
