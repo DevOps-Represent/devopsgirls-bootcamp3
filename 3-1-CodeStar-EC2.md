@@ -70,7 +70,14 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.7. Under the *Repository name* field, enter the same value you did in step 3.5. I.e. *firstnamelastname*  
 3.8. Click the *Next* button  
 ![CodeStar Project Name](/images/3-1-ec2-static-site/3_projectname.png)  
-3.9.1. On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*. Choose the VPC id, and subnet that has been supplied to you. Choose a t2.micro instance.  
+3.9.1. On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*. Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the table below. To find the correct VPC ID, look in the AWS Account ID column, and find the row that contains the AWS Account ID that has been supplied to you via email. For the Subnet, you can choose either Public Subnet 1 or Public Subnet 2 from the row that features your supplied AWS Account ID.  
+
+| AWS Account ID | VPC ID | Public Subnet 1 ID | Public Subnet 2 ID |
+| ------------ | ------------ | --------------- | --------------- |
+| 522028331501 | vpc-d83c9ebf | subnet-2cdeb14b | subnet-cc56ce85 |
+| 976007552049 | vpc-a33c9ec4 | subnet-e9dfb08e | subnet-604cd429 |
+| 214953911892 | vpc-c53a98a2 | subnet-f74bd3be | subnet-6ec3ac09 |
+
 ![Edit EC2 Options](/images/3-1-ec2-static-site/5_editec2options.png)  
 3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
 * CodeCommit is being for Source Control Management
@@ -82,7 +89,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.11. When you see the *Choose an Amazon EC2 Key Pair*, select *devops_girls* from the dropdown list, tick the acknowledgement box, and click the *Create Project* button (Normally you would make very sure you have access to this key in case you ever needed access to the EC2 instance)  
 ![Choose EC2 Key](/images/3-1-ec2-static-site/6_chooseec2key.png)  
 3.12. On the *It looks like this is your first time here.* screen, enter your name in the *Display Name* field, and an accessible email address in the *Email* field  
-3.13 On the *Pick how you want to edit your code* choose *Command line tools* and click the *See instructions* link 
+3.13 On the *Pick how you want to edit your code* choose *Command line tools* and click the *See instructions* link  
 ![Pick your tools](/images/3-1-ec2-static-site/7_picktools.png)   
 3.14 On the *Connect to your tools*, choose the Operating System that applies to you. For example Windows  
 3.15 Choose *HTTPS* as the Connection Method  
