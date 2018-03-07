@@ -61,12 +61,12 @@ Also, in the template is included a docker container definition that contain a w
 
 ![3-2-2-2-create-cf-stack](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-2-create-cf-stack.png?raw=true)
 
-2.2.3 In the **Select Template** page, under the section *Choose a template* provide Cloudformation template that you have already downloaded in the step 2.2.0 (*module2-ecs-static-site.yaml*)
+2.2.3 In the **Select Template** page, under the section *Choose a template* click "Browse.." to choose yaml template downloaded before, and click "next" (*module2-ecs-static-site.yaml*)
 
 ![3-2-2-3-select-template](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-3-select-template.png?raw=true)
 
 
-2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, last name without a space following the **-cf-ecs** string, as well as the name of the **StackPArentStack** in this case must be *DevOpsGirlsVPC* as shown in following the image.  
+2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, last name without a space following the **-cf-ecs** string, as well as the name of the **StackPArentStack** in this case must be *DevOpsGirlsVPC* as shown in the following image.  
 Leave the rest of the information with the default values.
 
 ![3-2-2-4-specify-datails](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-4-specify-datails.png?raw=true)
