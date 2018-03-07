@@ -154,13 +154,19 @@ Now you are almost there ;)!, remeber that you are looking for the web server in
 
 Now is time to create the AWS CodePipleline that is a continuous integration and continuous delivery service for fast and reliable application and infrastructure updates. You can use CodePipeline to fully model and automate your software release processes.
 
+2.3.0 Download from the [DevopsGirls' public S3 bucket](https://s3.console.aws.amazon.com/s3/buckets/devopsgirls1) the following files:
+
+![3-2-3-0-Update-CodeCommit-Repository](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-0-Update-CodeCommit-Repository.PNG?raw=true)
+
+And push them in your **CodeCommit** repository that you have created in the [Module 1](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md). To do that follow the steps described in the section [5. Push changes to CodeCommit Repo](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md#5-push-changes-to-codecommit-repo)
+
 2.3.1  Under the AWS services search field, search for codestar, and click on the **CodePipeline** auto drop down element
 
 2.3.2 Click on the **Create Pipeline** button. In the **Step 1:Name** in the **Pipeline name** field, provide the name following the structure as *your First Name*, *Your Last Name* following *-Pipeline* string.
 
 ![3-2-3-2-CodePipeline_Creation.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-2-CodePipeline_Creation.png?raw=true)
 
-2.3.3 In the **Step 2:Source**, under the **Source Provider** choose *AWS CodeCommit* and in the **Repository** fild provide the repository that you have used in the [Module 1](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md) (keep in mind that for documentation purpose we are using in the screenshot a different one) and leave the remain information with the default values.
+2.3.3 In the **Step 2:Source**, under the **Source Provider** choose *AWS CodeCommit* and in the **Repository** field provide the repository that you have used in the [Module 1](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md) (keep in mind that for documentation purpose we are using in the screenshot a different one) and leave the remain information with the default values.
 
 ![3-2-3-3-CodePipeline_Creation_Source](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-3-CodePipeline_Creation_Source.png?raw=true)
 
