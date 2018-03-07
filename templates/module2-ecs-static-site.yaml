@@ -1,6 +1,6 @@
 ---
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Setup for DevOpsGirsl Bootcamp 3, Module 2. ECS cluster in public subnet + CI setup
+Description: Setup for DevOpsGirls Bootcamp 3, Module 2. ECS cluster in public subnet + CI setup
 Parameters:
   SharedParentStack:
     Description: 'The shared parent stack that has the VPC bits'
