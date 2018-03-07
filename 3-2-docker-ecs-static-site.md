@@ -188,7 +188,7 @@ Once you have provided the above information you can click on **Save build proje
 ![3-2-3-4-b-CodePipeline_Creation_Build](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-4-b-CodePipeline_Creation_Build.png?raw=true)
 ![3-2-3-4-c-CodePipeline_Creation_Build](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-4-c-CodePipeline_Creation_Build.png?raw=true)
 
-2.3.5 In the **Step 4: Deploy** page provide the information according your *ECS* Cluster configuration aas per the screenshot. The **Image file name** must be *imagedefinitions.json*
+2.3.5 In the **Step 4: Deploy** page provide the information according your *ECS* Cluster configuration as per the screenshot. The **Image file name** must be *imagedefinitions.json*
 
 ![3-2-3-5-CodePipeline_Creation_Deploy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-5-CodePipeline_Creation_Deploy.png?raw=true)
 
