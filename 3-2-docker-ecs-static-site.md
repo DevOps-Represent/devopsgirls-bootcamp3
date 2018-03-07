@@ -66,7 +66,8 @@ Also, in the template is included a docker container definition that contain a w
 ![3-2-2-3-select-template](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-3-select-template.png?raw=true)
 
 
-2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, and last name without a space following the **-cf-ecs** string, and leave the rest of the information with the default values.
+2.2.4 Under the **Specify Details** page, in the *Stack name* field enter your first name, last name without a space following the **-cf-ecs** string, as well as the name of the **StackPArentStack** in this case must be *DevOpsGirlsVPC* as shown in following the image.  
+Leave the rest of the information with the default values.
 
 ![3-2-2-4-specify-datails](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-4-specify-datails.png?raw=true)
 
