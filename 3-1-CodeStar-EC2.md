@@ -60,7 +60,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 2.1. On the top-right side, make sure you select *Sydney*.  
 ![AWS Signin](/images/3-1-ec2-static-site/region.png)  
 ### 3. Create CodeStar Project
-3.1.  Under the AWS services search field, search for *codestar*, and click on the CodeStar auto drop down element  
+3.1. Under the AWS services search field, search for *codestar*, and click on the CodeStar auto drop down element  
 3.2. Click on the '+ Create a new project' link  
 ![CodeStar Create Project](/images/3-1-ec2-static-site/2_createcodestarproj.png)  
 3.3. On the left hand side, under Application Category, select *Static Website*  
@@ -79,7 +79,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 | 214953911892 | vpc-c53a98a2 | subnet-f74bd3be | subnet-6ec3ac09 |
 
 ![Edit EC2 Options](/images/3-1-ec2-static-site/5_editec2options.png)  
-3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case you should see that:
+3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case, you should see that:
 * CodeCommit is being for Source Control Management
 * CodeDeploy is being used for Application Deployment, and
 * CloudWatch is being used for Monitoring
@@ -107,14 +107,14 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.23. On the *Pick how you want to edit your code*, press the *Skip* button  
 3.24. Now CodeStar will start deploying your website via CodeDeploy  
 3.25. Refresh the CodeStar Dashboard to see what is happening  
-3.26. Have a look at the Commit hsitory panel, the Continuous Deployment , and the Application endpoint panel  
+3.26. Have a look at the Commit history panel, the Continuous Deployment, and the Application endpoint panel  
 3.27. Right click on the endpoint URL, and open the link in a new tab. You will see the standard AWS Blueprint template website  
 ![CodeDeploy in action](/images/3-1-ec2-static-site/13_codedeploy.png)
 
 ### 4. Download custom static HTML file from AWS S3
 4.1. Open your web browser and paste in the following URL, https://s3-ap-southeast-2.amazonaws.com/devopsgirls1/index.html  
 4.2. Click on the new tab, then right click anywhere on the webpage and select *Save as...*  
-4.3. Change thje filename to be index.html and save it in the webpage directory of your cloned git project repository on your workstation. For example, sallytran/webpage/index.html  
+4.3. Change the filename to be index.html and save it in the webpage directory of your cloned git project repository on your workstation. For example, sallytran/webpage/index.html  
 ![Save index.html file](/images/3-1-ec2-static-site/11_saveindex.png)
 
 ### 5. Push changes to CodeCommit Repo
@@ -122,7 +122,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 `cd C:\sallytran`  
 5.2. 'Add' the modified files to be ready for git commit. Enter this command:
 `git add .`  
-5.3. Commit the changes to your local git repository, inculding a comment. Enter this command:
+5.3. Commit the changes to your local git repository, including a comment. Enter this command:
 `git commit -m "Replaced the index.html file"`  
 5.4. Push the changes to the AWS CodeCommit hosted repository:
 `git push`  
@@ -132,7 +132,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 
 ### 6. Observe CodeDeploy redeploy your website with the changes
 6.1. Go back to your web browser and open up the AWS CodeStar Dashboard for your project, and refresh the page (Ctrl-F5)
-6.2. Have a look at the Commit hsitory panel, the Continuous Deployment , and the Application endpoint panel  
+6.2. Have a look at the Commit history panel, the Continuous Deployment , and the Application endpoint panel  
 6.3. Right click on the endpoint URL, and open the link in a new tab. You will see your newly customised website has been deployed to the cloud!
 ![CodeDeploy](/images/3-1-ec2-static-site/13_codedeploy.png)
 
