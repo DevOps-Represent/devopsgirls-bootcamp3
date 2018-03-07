@@ -31,9 +31,9 @@ You will need the following software installed on your workstation:
 
 **How to Install Git Client**
 
-- For **Windows** download [here](https://gitforwindows.org/) the latest installer. Once the file has been download successfully, double click on the downloaded file to start the installation process, configuring it with the default options.  
+- For **Windows** download the latest installer [here](https://gitforwindows.org/) . Once the file has been downloaded successfully, double click on the downloaded file to start the installation process, configuring it with the default options.  
  
-- For **macOS** download the latest installer from [here](https://sourceforge.net/projects/git-osx-installer/files/). Once the file has been download successfully, start the installation process configuring it with the default options.  
+- For **macOS** download the latest installer from [here](https://sourceforge.net/projects/git-osx-installer/files/). Once the file has been downloaded successfully, start the installation process configuring it with the default options.  
 
 - For **Debian/Ubuntu** using apt-get, open a terminal command line and run:
 
@@ -48,7 +48,7 @@ sudo apt-get install git
 git --version
 ```
 
-**Note**: If you would like to know more about how to use git [here you are a book's link](https://git-scm.com/book/en/v2) to understand everything about **git**. Enjoy it ;)!
+**Note**: If you would like to know more about how to use git [here is a link to a book](https://git-scm.com/book/en/v2) to understand everything about **git**. Enjoy it ;)!
 
 Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or [Visual Studio Code](https://code.visualstudio.com/download). 
 
