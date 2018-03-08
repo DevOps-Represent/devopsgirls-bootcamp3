@@ -85,7 +85,7 @@ $ aws s3 sync . s3://`yourname-devopsgirls-site`
 
 If not, got to `https://s3.console.aws.amazon.com/s3/buckets/yourname-devopsgirls-site` and upload the files via the AWS console (keep all the defaults):
 
-![Upload Files](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-8-upload-files.png?raw=true)
+![Upload Files](images/3-3-serverless-static-site/3-3-8-upload-files.png?raw=true)
 
 ### 2.) Confirm files have been uploaded
 Navigate to the S3 bucket in the AWS console, and confirm all the files in the website_files directory are listed there.
