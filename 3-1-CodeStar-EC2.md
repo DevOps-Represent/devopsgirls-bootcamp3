@@ -13,7 +13,7 @@
 - AWS CodeStar: https://aws.amazon.com/codestar/
 - AWS EC2: https://aws.amazon.com/ec2/
 - AWS CodeCommit: https://aws.amazon.com/codecommit/
-- AWS Code: https://aws.amazon.com/codedeploy/
+- AWS CodeDeploy: https://aws.amazon.com/codedeploy/
 - Git: https://git-scm.com/
 
 ## Module Overview
