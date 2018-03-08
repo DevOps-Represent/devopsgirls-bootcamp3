@@ -48,7 +48,7 @@ Also, in the template is included a *Docker container* definition that contain a
 
 2.0 Right click on the the following [link](https://raw.githubusercontent.com/DevOps-Girls/devopsgirls-bootcamp3/master/templates/module2-ecs-static-site.yaml) and save the *module2-ecs-static-site.yaml*  in your local machine / computer / laptop.
 
-2.1 Login with your credential to the AWS account, you have to do the same steps of the Module 1:
+2.1 Login with your credential to the **same** AWS account you have used in the Module 1:
 
 2.1.1 Open a web browser and go to https://xxxxxx.signin.aws.amazon.com/console. Log in using your supplied account credentials.  
 
