@@ -70,7 +70,9 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 3.7. Under the *Repository name* field, enter the same value you did in step 3.5. I.e. *firstnamelastname*  
 3.8. Click the *Next* button  
 ![CodeStar Project Name](/images/3-1-ec2-static-site/3_projectname.png)  
-3.9.1. On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*. Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the table below. To find the correct VPC ID, look in the AWS Account ID column, and find the row that contains the AWS Account ID that has been supplied to you via email. For the Subnet, you can choose either Public Subnet 1 or Public Subnet 2 from the row that features your supplied AWS Account ID.  
+3.9.1. **IMPORTANT:** On the *Review project details* page, click the *Edit Amazon EC2 Confirguration link*.  
+![Edit EC2 Options Link](/images/3-1-ec2-static-site/editEC2.png)  
+Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the table below. To find the correct VPC ID, look in the AWS Account ID column, and find the row that contains the AWS Account ID that has been supplied to you via email. For the Subnet, you can choose either Public Subnet 1 or Public Subnet 2 from the row that features your supplied AWS Account ID.  
 
 | AWS Account ID | VPC ID | Public Subnet 1 ID | Public Subnet 2 ID |
 | ------------ | ------------ | --------------- | --------------- |
