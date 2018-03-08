@@ -82,6 +82,7 @@ Once you have completed the *tags section*, leave remain information with the de
 
 2.6 In the **Review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the **previous** button, or if everything is as you are expecting click in the **create** button to create the *ECS cluster* using a *Cloudformation template*.  
 Another important step is at the end of the page you must to **check** the box about *"I acknowledge that AWS CloudFormation might create IAM resources."*
+(The image does not show the **SharedParentStack** information, but keep in mind that is only a reference and in your **Review** page it must be shown) 
 
 ![3-2-2-6-review.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-6-review.png?raw=true)
 
@@ -155,7 +156,7 @@ Now is time to create the AWS CodePipleline that is a continuous integration and
 
 ![3-2-3-0-Update-CodeCommit-Repository](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-0-Update-CodeCommit-Repository.PNG?raw=true)
 
-And push them in your **CodeCommit** repository that you have created in the [Module 1](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md). To do that follow the steps described in the section [5. Push changes to CodeCommit Repo](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md#5-push-changes-to-codecommit-repo)
+And push them in your **CodeCommit repository** that you have created in the [Module 1](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md) in the root level, for instance, if your **CodeCommit repository** name is **JudeMilhon_Repo** save the files in home (root) directory of your **CodeCommit repository** on your workstation and not inside other directory. For further information about how to do it follow the steps described in the section [5. Push changes to CodeCommit Repo](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/3-1-CodeStar-EC2.md#5-push-changes-to-codecommit-repo)
 
 2.2.1  Under the AWS services search field, search for codestar, and click on the **CodePipeline** auto drop down element
 
@@ -189,7 +190,7 @@ Once you have provided the above information you can click on **Save build proje
 
 ![3-2-3-5-CodePipeline_Creation_Deploy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-5-CodePipeline_Creation_Deploy.png?raw=true)
 
-2.2.6 Under the final configuration step **AWS Service Role** in the *Role name* file you have to provide the one that was created in the stack with the Cloudformation template (you can double check it in the point **2.2.9** and is the value that appears in the column **Logical ID** *Module2CodePipelineRole*)
+2.2.6 Under the final configuration step **AWS Service Role** in the *Role name* fied you have to provide the one that was created in the stack with the Cloudformation template (you can double check it in the point **2.2.9** and is the value that appears in the column **Logical ID** *Module2CodePipelineRole*)
 
 ![3-2-3-6-CodePipeline_Creation_ServiceRole](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-6-CodePipeline_Creation_ServiceRole.png?raw=true)
 
