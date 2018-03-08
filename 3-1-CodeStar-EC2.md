@@ -99,12 +99,31 @@ Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the 
 ![Connect your tools](/images/3-1-ec2-static-site/8_connecttools.png)  
 3.17. Under the *HTTPS Git credentials for AWS CodeCommit* click the Generate button. Save your login details somewhere securely such as Keepass. For the purposes of this exercise, a text file will be okay  
 ![Generate CodeCommit HTTPS Credentials](/images/3-1-ec2-static-site/9_generategitcreds.png)  
-![CodeCommit HTTPS Credentials](/images/3-1-ec2-static-site/10_gitcredscreated.png) 
+![CodeCommit HTTPS Credentials](/images/3-1-ec2-static-site/10_gitcredscreated.png)  
 3.18. Go back to your other browser tab, and click the *copy* link next to the CodeCommit repository URL  
-3.19. Open up a command line terminal and navigate to a directory where you wish to clone the new repository into  
-3.20. Paste the git clone command and press enter  
+3.19. Open up a command line terminal and navigate to a directory where you wish to clone the new repository into. If you don't already have a parent directory to keep your git repositories, let's create one  
+
+Windows:  
+```
+C:
+cd\
+mkdir code
+cd code
+```
+Linux & Mac OSX:  
+```
+cd /
+mkdir code
+cd code
+```
+
+3.20. Paste the git clone command and press enter. For example:  
+```
+git clone https://git-codecommit.ap-southeast-2.amazonaws.com/v1/repos/sallytran
+```
+
 3.21. Enter your CodeCommit credentials as previously saved  
-![git clone](/images/3-1-ec2-static-site/gitclone.png)
+![git clone](/images/3-1-ec2-static-site/gitclone.png)   
 3.22. Click the *Back* button on the AWS Choose your tools page  
 3.23. On the *Pick how you want to edit your code*, press the *Skip* button  
 3.24. Now CodeStar will start deploying your website via CodeDeploy  
@@ -120,8 +139,8 @@ Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the 
 ![Save index.html file](/images/3-1-ec2-static-site/11_saveindex.png)
 
 ### 5. Push changes to CodeCommit Repo
-5.1. In your command terminal, navigate to the home (root) directory of your CodeCommit repository on your workstation. For example:
-`cd C:\sallytran`  
+5.1. In your command terminal, navigate to the home (root) directory of your CodeCommit repository on your workstation. This is the directory that you cloned from the CodeCimmit Git repository in step For example:
+`cd C:\code\sallytran`  
 5.2. 'Add' the modified files to be ready for git commit. Enter this command:
 `git add .`  
 5.3. Commit the changes to your local git repository, including a comment. Enter this command:
