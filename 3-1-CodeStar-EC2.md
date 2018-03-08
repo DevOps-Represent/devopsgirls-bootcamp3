@@ -81,8 +81,8 @@ Choose a t2.micro instance. Choose the VPC ID, and Subnet ID by referencing the 
 | 214953911892 | vpc-c53a98a2 | subnet-f74bd3be | subnet-6ec3ac09 |
 
 ![Edit EC2 Options](/images/3-1-ec2-static-site/5_editec2options.png)  
-3.9.2. On the *Review project details* page, observe the AWS tools that will be utilisied and connected by CodeStar. In this case, you should see that:
-* CodeCommit is being for Source Control Management
+3.9.2. On the *Review project details* page, observe the AWS tools that will be utilised and connected by CodeStar. In this case, you should see that:
+* CodeCommit is being used for Source Control Management
 * CodeDeploy is being used for Application Deployment, and
 * CloudWatch is being used for Monitoring
 
