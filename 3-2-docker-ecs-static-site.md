@@ -82,7 +82,7 @@ Once you have completed the *tags section*, leave remain information with the de
 
 2.6 In the **Review** page check out if everything is good according with the instructions, in the case that you need to modify something click in the **previous** button, or if everything is as you are expecting click in the **create** button to create the *ECS cluster* using a *Cloudformation template*.  
 Another important step is at the end of the page you must to **check** the box about *"I acknowledge that AWS CloudFormation might create IAM resources."*
-(The image does not show the **SharedParentStack** information, but keep in mind that is only a reference and in your **Review** page it must be shown) 
+ 
 
 ![3-2-2-6-review.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-2-6-review.png?raw=true)
 
