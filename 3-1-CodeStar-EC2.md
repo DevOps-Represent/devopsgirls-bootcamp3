@@ -57,7 +57,7 @@ Also you will need a **Text editor** such as [Sublime](www.sublimetext.com/3) or
 1.1. Open a web browser and go to https://console.aws.amazon.com/console/home. Log in using your supplied account credentials.
 ![AWS Signin](/images/3-1-ec2-static-site/1_awssignin.png)  
 ### 2. Ensure you're in the right AWS region
-2.1. On the top-right side, make sure you select *Sydney*.  
+2.1. On the top-right side, make sure you select *Asia Pacific (Sydney)*.  
 ![AWS Signin](/images/3-1-ec2-static-site/region.png)  
 ### 3. Create CodeStar Project
 3.1. Under the AWS services search field, search for *codestar*, and click on the CodeStar auto drop down element  
