@@ -9,7 +9,7 @@
 
 - When you use EC2 instances, or containers, you have to make some decisions on capacity when you are provisioning. You also have to pay for that capacity, and manage and operate those resources. For example in case of EC2, you have to keep the OS and software configured and kepts up to date.
 
-- What is Serverless? Do not think of the word literally, as there are servers under the hood. You dont manage those servers, and do not have to take decisions on the capacity you might need. Also when you dont use the capacity, you dont pay anything for it.
+- What is Serverless? Do not think of the word literally, as there are servers under the hood. You don't manage those servers, and do not have to take decisions on the capacity you might need. Also when you don't use the capacity, you don't pay anything for it.
 
 - In our case of hosting a static website, we do not perform any dynamic computation. We store some files, and the computing capacity is used to handle web requests and serve the static pages.
 
@@ -63,19 +63,29 @@ Click on the "Properties" tab, and click on "Static Website Hosting"
 ![Configure Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-7-configure-s3-bucket.png?raw=true)
 
 ### 3.) Configure bucket to host a website
-Choose "Use this bucket to host a website", enter "index.html" in the "Index Dcoument" text box, and click "Save".
+Choose "Use this bucket to host a website", enter "index.html" in the "Index document" text box, and click "Save".
 
 ![Configure Bucket](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-8-configure-s3-bucket.png?raw=true)
 
 ## Copy the static website files to S3 bucket and make them public
 
 ### 1.) Copy the static files to S3 bucket
-Change working directory to website_files, and copy the files to the S3 bucket created above.
+If you have not yet done so, clone the DevOps-Girls/devopsgirls-bootcamp3 repo and change working directory to website_files:
 
 ```
-$ cd website_files
+$ git clone git@github.com:DevOps-Girls/devopsgirls-bootcamp3.git
+$ cd devopsgirls-bootcamp3/website_files
+```
+
+Copy the files to the S3 bucket created above. If you have the AWS CLI client:
+
+```
 $ aws s3 sync . s3://`yourname-devopsgirls-site`
 ```
+
+If not, got to `https://s3.console.aws.amazon.com/s3/buckets/yourname-devopsgirls-site` and upload the files via the AWS console (keep all the defaults):
+
+![Upload Files](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-8-upload-files.png?raw=true)
 
 ### 2.) Confirm files have been uploaded
 Navigate to the S3 bucket in the AWS console, and confirm all the files in the website_files directory are listed there.
@@ -148,7 +158,7 @@ Note down the public URL of the S3 bucket and click on URL
 
 ![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-19-modify-codebuild-iam-policy.png?raw=true)
 
-### 11.) Leave the field "Request conditions" at its defailt, and click on "Review policy"
+### 11.) Leave the field "Request conditions" at its default, and click on "Review policy"
 
 ![CodeBuild IAM Policy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-20-modify-codebuild-iam-policy.png?raw=true)
 
@@ -164,7 +174,7 @@ Note down the public URL of the S3 bucket and click on URL
 
 ![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-23-run-codebuild-project.png?raw=true)
 
-### 15.) In the "Start new build" page, leave the default values for "Project name", "Source provider", "Repository" and "Git clone depth". For "Branch" choose `master`, and leave "Source version" at the default value populated for your branch. Click on "Start Build"
+### 15.) In the "Start new build" page, leave the default values for "Project name", "Source provider", "Repository" and "Git clone depth". For "Branch" choose `master`, and leave "Source version" at the default value populated for your branch. Under "Hide advanced options", reduce the timeout to 10 min. Click on "Start Build"
 
 ![Run CodeBuild Project](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-3-serverless-static-site/3-3-24-run-codebuild-project.png?raw=true)
 
