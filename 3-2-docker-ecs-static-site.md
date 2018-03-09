@@ -179,7 +179,7 @@ In the next section about **VPC**, you have to specified the information that is
 | 214953911892 | vpc-c53a98a2 | subnet-d54ad29c | subnet-0ec0af69 | sg-2249e95b |
 
 
-(if you have any doubt double check it whit the facilitator's team)  
+(if you have any doubt double check it with the facilitator's team)  
 
 Finally in the **Advanced** section, you have to create four *Environment variables*:
 
@@ -190,7 +190,7 @@ Finally in the **Advanced** section, you have to create four *Environment variab
 |AWS_ACCOUNT_ID|*The IdNumber associated to your account*|Plaintext|
 |AWS_DEFAULT_REGION|*The region where you are working on*|Plaintext|
 
-* A way to know about what is the name of your **IMAGE_REPO_NAME** is to check the **Logical ID** *ECRRepository* value in your stack on the *Resources* tab details as is described in the point **2.9** of this manual.
+* A way to know about the name of your **IMAGE_REPO_NAME** is to check the **Logical ID** *ECRRepository* value in your stack on the *Resources* tab details as is described in the point **2.9** of this manual.
 
 Once you have provided the above information you can click on **Save build project** button and click **Next**.
 
@@ -202,7 +202,7 @@ Once you have provided the above information you can click on **Save build proje
 
 ![3-2-3-5-CodePipeline_Creation_Deploy](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-5-CodePipeline_Creation_Deploy.png?raw=true)
 
-2.2.6 Under the final configuration step **AWS Service Role** in the *Role name* fied you have to provide the one that was created in the stack with the Cloudformation template (you can double check it in the point **2.2.9** and is the value that appears in the column **Logical ID** *Module2CodePipelineRole*)
+2.2.6 Under the final configuration step **AWS Service Role** in the *Role name* field you have to provide the one that was created in the stack with the Cloudformation template (you can double check it in the point **2.9** and is the value that appears in the column **Logical ID** *Module2CodePipelineRole*)
 
 ![3-2-3-6-CodePipeline_Creation_ServiceRole](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-6-CodePipeline_Creation_ServiceRole.png?raw=true)
 
@@ -216,11 +216,12 @@ Once you have provided the above information you can click on **Save build proje
 
 ![3-2-3-8-a-CodePipeline_Running](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-8-a-CodePipeline_Running.png?raw=true)
 
-You just need to wait for the process to be completed (it could take about 10 min) and once is ready, check again the IP of your web server and a new web page should be deployed ;).
+You just need to wait for the process to be completed (it could take about 10 min).
 
 ![3-2-3-8-b-CodePipeline_Completed](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-8-b-CodePipeline_Completed.png?raw=true)
 
-And CONGRATULATIONS again, you have deployed a new release using AWS CodePipeline
+Once is ready, check again the IP of your web server and a new web page should be deployed ;).
+CONGRATULATIONS again, you have deployed a new release using AWS CodePipeline to deploy a new container definition on ECS.
 
 ![3-2-3-8-b-CodePipeline_Completed](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-8-c-CodePipeline_NewDepoyment.png?raw=true)
 
