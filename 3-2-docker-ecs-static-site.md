@@ -170,7 +170,17 @@ And push them in your **CodeCommit repository** that you have created in the [Mo
 
 2.2.4 Under the **Step 3: Build** choose *AWS CodeBuild* as a **Build provider** and in the **Configure your project** section choose *Create a new build project* providing the following the structure as *your First Name*, *Your Last Name* following *-CodeBuild* string.  
 The next data that you need to provide on the section **Environment: How to build** is the one that appears in the screenshot. Also, in the **AWS CodeBuild service role** section you have to choose the role created in the stack with the Cloudformation template (you can double check it in the point **2.9** and is the value that appears in the column **Logical ID** *Module2CodeBuildRole*).  
-In the next section **VPC**, you have to specified the VPC, the private subnets asociated in the cloudformation creation also the *Security group* (if you have any doubt about how to get those information double check it whit the facilitator's team)
+In the next section about **VPC**, you have to specified the information that is shown in the following table for the VPC, the private subnets also the *Security group* that is asociated with the account that you are working on:
+
+| AWS Account ID | VPC ID | Private Subnet 1 ID | Private Subnet 2 ID | Security Group|
+| ------------ | ------------ | --------------- | --------------- | --------------- |
+| 522028331501 | vpc-d83c9ebf | subnet-13c3ac74 | subnet-d74ad29e | sg-f64ded8f |
+| 976007552049 | vpc-a33c9ec4 | subnet-83c5aae4 | subnet-8948d0c0 | sg-8c4cecf5 |
+| 214953911892 | vpc-c53a98a2 | subnet-d54ad29c | subnet-0ec0af69 | sg-2249e95b |
+
+
+(if you have any doubt double check it whit the facilitator's team)  
+
 Finally in the **Advanced** section, you have to create four *Environment variables*:
 
 |Name|Value|Type|
