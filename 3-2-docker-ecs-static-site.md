@@ -160,7 +160,7 @@ And push them in your **CodeCommit repository** that you have created in the [Mo
 
 2.2.1  Under the AWS services search field, search for codestar, and click on the **CodePipeline** auto drop down element
 
-2.2.2 Click on the **Create Pipeline** button. In the **Step 1:Name** in the **Pipeline name** field, provide the name following the structure as *your First Name*, *Your Last Name* following *-Pipeline* string.
+2.2.2 Click on the **Create Pipeline** button. In the **Step 1:Name** in the **Pipeline name** field, provide the name following the structure as *your First Name*, *Your Last Name* following **ecs-Pipeline** string.
 
 ![3-2-3-2-CodePipeline_Creation.png](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-2-CodePipeline_Creation.png?raw=true)
 
