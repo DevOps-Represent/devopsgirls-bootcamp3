@@ -190,6 +190,8 @@ Finally in the **Advanced** section, you have to create four *Environment variab
 |AWS_ACCOUNT_ID|*The IdNumber associated to your account*|Plaintext|
 |AWS_DEFAULT_REGION|*The region where you are working on*|Plaintext|
 
+* A way to know about what is the name of your **IMAGE_REPO_NAME** is to check the **Logical ID** *ECRRepository* value in your stack on the *Resources* tab details as is described in the point **2.9** of this manual.
+
 Once you have provided the above information you can click on **Save build project** button and click **Next**.
 
 ![3-2-3-4-a-CodePipeline_Creation_Build](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-4-a-CodePipeline_Creation_Build.png?raw=true)
