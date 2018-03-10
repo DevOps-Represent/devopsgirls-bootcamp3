@@ -168,7 +168,7 @@ And push them in your **CodeCommit repository** that you have created in the [Mo
 
 ![3-2-3-3-CodePipeline_Creation_Source](https://github.com/DevOps-Girls/devopsgirls-bootcamp3/blob/master/images/3-2-docker-ecs-static-site/3-2-3-3-CodePipeline_Creation_Source.png?raw=true)
 
-2.2.4 Under the **Step 3: Build** choose *AWS CodeBuild* as a **Build provider** and in the **Configure your project** section choose *Create a new build project* providing the following the structure as *your First Name*, *Your Last Name* following *-CodeBuild* string.
+2.2.4 Under the **Step 3: Build** choose *AWS CodeBuild* as a **Build provider** and in the **Configure your project** section choose *Create a new build project* providing the following structure as *your First Name*, *Your Last Name* following *-CodeBuild* string.
 The next data that you need to provide on the section **Environment: How to build** is the one that appears in the screenshot. Also, in the **AWS CodeBuild service role** section you have to choose the role created in the stack with the Cloudformation template (you can double check it in the point **2.9** and is the value that appears in the column **Logical ID** *Module2CodeBuildRole*).
 In the next section about **VPC**, you have to specified the information that is shown in the following table for the VPC, the private subnets also the *Security group* that is asociated with the account that you are working on:
 
