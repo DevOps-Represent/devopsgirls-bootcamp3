@@ -8,12 +8,12 @@ Pull requests to this document are welcome as I'm sure there are many more optio
 
 We advertise all the upcoming activities through these two channels:
 
- * Twitter ![@devopsgirls](https://twitter.com/devopsgirls)
+ * Twitter [@devopsgirls](https://twitter.com/devopsgirls)
  * The devopsgirls slack chat. If you want to join DM the above twitter or email devopsgirls (at) rea-group.com. Apart from advertising activities this is agreat medium to chat with the community, ask and respond questions about devops as well as to get access to job offers in the #jobs channel.
  
 We have a few activities that we are aiming to run semi-regularly, including:
 
- * ![Weekend DevOps Workshops for Women](https://www.meetup.com/DevOps-Workshops-for-Women/)
+ * [Weekend DevOps Workshops for Women](https://www.meetup.com/DevOps-Workshops-for-Women/)
  * Train with us! (Community seats in REA Group internal training)
  * Bootcamps (We have done 3 so far but hoping to keep them happening at least twice a year)
 
